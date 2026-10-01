@@ -63,9 +63,9 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .pack.ux .leaf{border-left-color:#ff991f}
 .eap-card.ux{border-top-color:#ff991f}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
-.track .dev{width:59.615%;background:var(--dev)}
-.track .qa{width:11.538%;background:var(--qa)}
-.track .ux{width:28.846%;background:#ff991f}
+.track .dev{width:54.348%;background:var(--dev)}
+.track .qa{width:13.043%;background:var(--qa)}
+.track .ux{width:32.609%;background:#ff991f}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
 .tree{margin-top:28px;display:flex;flex-direction:column;align-items:center}
@@ -153,6 +153,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .eap-h{padding:12px 16px;color:#fff;font-weight:800;display:flex;justify-content:space-between;align-items:center}
 .eap-h.admin{background:linear-gradient(135deg,#00875a,#006644)}
 .eap-h.app{background:linear-gradient(135deg,#6554c0,#403294)}
+.eap-h.ux{background:#c25100}
 .eap-fase{padding:10px 14px 6px;border-top:1px solid var(--line)}
 .eap-fase h3{margin:0 0 8px;font-size:.82rem;display:flex;justify-content:space-between;color:#c25100}
 .eap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding-bottom:8px}
@@ -193,21 +194,21 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
   </div>
   <div class="metrics">
-    <div class="m navy"><span>Total do Projeto</span><b>104h</b></div>
-    <div class="m admin"><span>Admin (Total)</span><b>55h</b></div>
-    <div class="m app"><span>App (Total)</span><b>19h</b></div>
+    <div class="m navy"><span>Total do Projeto</span><b>92h</b></div>
+    <div class="m admin"><span>Admin (Total)</span><b>50h</b></div>
+    <div class="m app"><span>App (Total)</span><b>12h</b></div>
     <div class="m ux"><span>UX/Design</span><b>30h</b></div>
-    <div class="m dev"><span>Desenvolvimento</span><b>62h</b></div>
+    <div class="m dev"><span>Desenvolvimento</span><b>50h</b></div>
     <div class="m qa"><span>Testes e Q.A.</span><b>12h</b></div>
   </div>
   <div class="bars">
-    <div class="lab"><span class="d">Desenvolvimento (59,6%)</span><span class="u">UX/Design (28,8%)</span><span class="q">Q.A. (11,5%)</span></div>
+    <div class="lab"><span class="d">Desenvolvimento (54,3%)</span><span class="u">UX/Design (32,6%)</span><span class="q">Q.A. (13,0%)</span></div>
     <div class="track"><i class="dev"></i><i class="ux"></i><i class="qa"></i></div>
   </div>
 </header>
 
 <section id="macro" class="tree">
-  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">104h</span></div>
+  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">92h</span></div>
   <div class="vline"></div>
   <div class="hline-wrap"></div>
   <div class="drop">
@@ -224,29 +225,27 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
     <div class="col">
       <div class="stem"></div>
-      <div class="node branch admin">Admin (Total) <span class="hrs">55h</span></div>
+      <div class="node branch admin">Admin (Total) <span class="hrs">50h</span></div>
       <div class="stem"></div>
       <div class="pack admin">
-        <h3>Plataforma · 49h dev + 6h QA</h3>
+        <h3>Plataforma · 44h dev + 6h QA</h3>
         <div class="cards">
           <div class="leaf"><span class="hrs">8h</span><b>1 Persistência</b><span>Salvamento de dados de emissão do usuário</span></div>
-          <div class="leaf"><span class="hrs">20h</span><b>2 + 3</b><span>Autenticação e criptografia de comunicação</span></div>
+          <div class="leaf"><span class="hrs">20h</span><b>Autenticação + Orquestração</b><span>Autenticação e criptografia de comunicação</span></div>
           <div class="leaf"><span class="hrs">8h</span><b>4 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
           <div class="leaf"><span class="hrs">8h</span><b>5 Gravação</b><span>Gravação de certificado e envio para Enotas + S3</span></div>
-          <div class="leaf"><span class="hrs">5h</span><b>6 UX</b><span>Melhorias de interface no admin</span></div>
           <div class="leaf qa"><span class="hrs">6h</span><b>7 QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="stem"></div>
-      <div class="node branch app">App (Total) <span class="hrs">19h</span></div>
+      <div class="node branch app">App (Total) <span class="hrs">12h</span></div>
       <div class="stem"></div>
       <div class="pack app">
-        <h3>Cliente · 13h dev + 6h QA</h3>
+        <h3>Cliente · 6h dev + 6h QA</h3>
         <div class="cards">
           <div class="leaf"><span class="hrs">6h</span><b>4 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
-          <div class="leaf"><span class="hrs">7h</span><b>6 UX</b><span>Criar melhorias de interface para o fluxo novo</span></div>
           <div class="leaf qa"><span class="hrs">6h</span><b>7 QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
@@ -513,13 +512,13 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   <div class="wbs">
 
     <div class="grp" data-open="1">
-      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">104h</span></span></button>
+      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">92h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">104h</span></div></div>
+        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">92h</span></div></div>
         <div class="row l2"><div class="t"><b>UX/Design</b><p>Pesquisa, fluxos e design do fluxo novo.</p></div><div class="meta"><span class="tag ux">30h</span></div></div>
-        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>Persistência, HMAC/crypto, crons de recuperação, gravação e UX do admin.</p></div><div class="meta"><span class="tag admin">55h</span></div></div>
-        <div class="row l2"><div class="t"><b>App (Total)</b><p>APIs do fluxo novo e melhorias de interface para o cliente.</p></div><div class="meta"><span class="tag app">19h</span></div></div>
-        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>Entrega funcional sem a fatia exclusiva de testes.</p></div><div class="meta"><span class="tag dev">62h</span></div></div>
+        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>Persistência, autenticação, crons de recuperação e gravação.</p></div><div class="meta"><span class="tag admin">50h</span></div></div>
+        <div class="row l2"><div class="t"><b>App (Total)</b><p>APIs do fluxo novo para o cliente.</p></div><div class="meta"><span class="tag app">12h</span></div></div>
+        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>Entrega funcional sem a fatia exclusiva de testes.</p></div><div class="meta"><span class="tag dev">50h</span></div></div>
         <div class="row l2"><div class="t"><b>Testes e Q.A.</b><p>Homologação E2E e regressão do processo.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
       </div>
     </div>
@@ -532,41 +531,38 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">55h</span></span></button>
+      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">50h</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>1 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>2 HMAC + 3 Crypto + PFX</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>6 UX</b><p>Melhorias de interface no admin para o fluxo novo.</p></div><div class="meta"><span class="tag tot">5h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">19h</span></span></button>
+      <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">12h</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>6 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div><div class="meta"><span class="tag tot">7h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">62h</span></span></button>
+      <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">50h</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>1 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="row"><div class="t"><b>2 HMAC + 3 Crypto + PFX</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">14h</span></div></div>
         <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="row"><div class="t"><b>6 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div><div class="meta"><span class="tag tot">12h</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
       <button class="gh qa" type="button">Testes e Q.A. <span class="right"><span class="pill">12h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e SafeWeb.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
+        <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
       </div>
     </div>
 
@@ -630,18 +626,12 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="eap-block" data-open="1">
-      <button class="eap-h admin" type="button"><span>ADMIN (Plataforma)</span><span>55h</span></button>
+      <button class="eap-h admin" type="button"><span>ADMIN (Plataforma)</span><span>50h</span></button>
       <div class="eap-body">
         <div class="eap-fase">
           <h3>1 BackEnd <span>20h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">20h</span><b>2 + 3</b><p>Autenticação e criptografia de comunicação (HMAC, CSR, chave cifrada, PFX).</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>2 FrontEnd <span>5h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">5h</span><b>6 UX Admin</b><p>Criar melhorias de interface para o fluxo novo no admin.</p></div>
+            <div class="eap-card"><span class="hrs">20h</span><b>Autenticação + Orquestração</b><p>Autenticação e criptografia de comunicação.</p></div>
           </div>
         </div>
         <div class="eap-fase">
@@ -672,18 +662,12 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="eap-block app" data-open="1">
-      <button class="eap-h app" type="button"><span>APP (Cliente)</span><span>19h</span></button>
+      <button class="eap-h app" type="button"><span>APP (Cliente)</span><span>12h</span></button>
       <div class="eap-body">
         <div class="eap-fase">
           <h3>1 BackEnd <span>6h</span></h3>
           <div class="eap-grid">
             <div class="eap-card"><span class="hrs">6h</span><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>2 FrontEnd <span>7h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">7h</span><b>6 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div>
           </div>
         </div>
         <div class="eap-fase">
