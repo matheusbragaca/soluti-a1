@@ -90,7 +90,9 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .pack.admin h3{background:#e3fcef;color:var(--admin-d)}
 .pack.app h3{background:#eae6ff;color:var(--app-d)}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.pack.admin .cards,.pack.app .cards{grid-template-columns:1fr}
 .leaf{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:8px 10px;min-height:78px}
+.pack.admin .leaf,.pack.app .leaf{min-height:0}
 .pack.admin .leaf{border-left-color:var(--admin)}
 .pack.app .leaf{border-left-color:var(--app)}
 .leaf.qa{border-left-color:var(--qa)}
