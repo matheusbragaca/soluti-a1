@@ -229,11 +229,11 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <div class="pack admin">
         <h3>Plataforma · 44h dev + 6h QA</h3>
         <div class="cards">
-          <div class="leaf"><span class="hrs">8h</span><b>1 Persistência</b><span>Salvamento de dados de emissão do usuário</span></div>
-          <div class="leaf"><span class="hrs">20h</span><b>2 Autenticação + Orquestração</b><span>Autenticação e criptografia de comunicação</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>4 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>5 Gravação</b><span>Gravação de certificado e envio para Enotas + S3</span></div>
-          <div class="leaf qa"><span class="hrs">6h</span><b>7 QA</b><span>Homologação + regressão do processo</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Persistência</b><span>Salvamento de dados de emissão do usuário</span></div>
+          <div class="leaf"><span class="hrs">20h</span><b>Autenticação</b><span>Autenticação e criptografia de comunicação</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação de certificado e envio para Enotas + S3</span></div>
+          <div class="leaf qa"><span class="hrs">6h</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
@@ -243,8 +243,8 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <div class="pack app">
         <h3>Cliente · 6h dev + 6h QA</h3>
         <div class="cards">
-          <div class="leaf"><span class="hrs">6h</span><b>4 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
-          <div class="leaf qa"><span class="hrs">6h</span><b>7 QA</b><span>Homologação + regressão do processo</span></div>
+          <div class="leaf"><span class="hrs">6h</span><b>Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
+          <div class="leaf qa"><span class="hrs">6h</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
@@ -531,29 +531,29 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     <div class="grp" data-open="1">
       <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">50h</span><span class="pill">44h Dev</span><span class="pill">6h QA</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>1 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>2 Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
+        <div class="row"><div class="t"><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Orquestração</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
       <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">12h</span><span class="pill">6h Dev</span><span class="pill">6h QA</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
+        <div class="row"><div class="t"><b>Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
       <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">50h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>1 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="row"><div class="t"><b>2 Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
-        <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">14h</span></div></div>
-        <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="row"><div class="t"><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
+        <div class="row"><div class="t"><b>Orquestração</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">14h</span></div></div>
+        <div class="row"><div class="t"><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
         <div class="note">44h Admin + 6h App.</div>
       </div>
     </div>
@@ -561,7 +561,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     <div class="grp" data-open="1">
       <button class="gh qa" type="button">Testes e QA <span class="right"><span class="pill">12h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
       </div>
     </div>
 
@@ -630,31 +630,31 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
         <div class="eap-fase">
           <h3>1 BackEnd <span>20h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">20h</span><b>2 Autenticação + Orquestração</b><p>Autenticação e criptografia de comunicação.</p></div>
+            <div class="eap-card"><span class="hrs">20h</span><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div>
           </div>
         </div>
         <div class="eap-fase">
           <h3>3 Banco de Dados <span>8h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>1 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div>
+            <div class="eap-card"><span class="hrs">8h</span><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div>
           </div>
         </div>
         <div class="eap-fase">
           <h3>4 Crons <span>8h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (polling assíncrono).</p></div>
+            <div class="eap-card"><span class="hrs">8h</span><b>Orquestração</b><p>Rotinas de emissão e recuperação de certificado (polling assíncrono).</p></div>
           </div>
         </div>
         <div class="eap-fase">
           <h3>5 Integrações <span>8h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div>
+            <div class="eap-card"><span class="hrs">8h</span><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div>
           </div>
         </div>
         <div class="eap-fase">
           <h3>6 Testes e QA <span>6h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card qa"><span class="hrs">6h</span><b>7 QA</b><p>Homologação + regressão do processo no admin.</p></div>
+            <div class="eap-card qa"><span class="hrs">6h</span><b>QA</b><p>Homologação + regressão do processo no admin.</p></div>
           </div>
         </div>
       </div>
@@ -666,13 +666,13 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
         <div class="eap-fase">
           <h3>1 BackEnd <span>6h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">6h</span><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app.</p></div>
+            <div class="eap-card"><span class="hrs">6h</span><b>Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app.</p></div>
           </div>
         </div>
         <div class="eap-fase">
           <h3>3 Testes e QA <span>6h</span></h3>
           <div class="eap-grid">
-            <div class="eap-card qa"><span class="hrs">6h</span><b>7 QA</b><p>Homologação + regressão do processo no app.</p></div>
+            <div class="eap-card qa"><span class="hrs">6h</span><b>QA</b><p>Homologação + regressão do processo no app.</p></div>
           </div>
         </div>
       </div>
