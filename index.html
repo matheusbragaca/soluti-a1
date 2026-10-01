@@ -13,18 +13,20 @@
   --ice:#e8f3ff;
   --line:#d9e4f0;
   --muted:#6b7c90;
-  --ok:#1a7a9c;
-  --card:#fff;
+  --admin:#00875a;
+  --admin-d:#006644;
+  --app:#6554c0;
+  --app-d:#403294;
+  --qa:#ff5630;
+  --dev:#0052cc;
   --shadow:0 10px 30px rgba(30,58,95,.08);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--navy);font:14px/1.45 "Segoe UI",system-ui,sans-serif}
 button,a{font:inherit}
 code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d);padding:1px 5px;border-radius:4px}
-
 .shell{max-width:1480px;margin:0 auto;padding:14px 14px 48px}
 
-/* ===== HEADER (nelcino-like) ===== */
 .bar{
   background:#fff;border:1px solid var(--line);border-radius:22px;
   box-shadow:var(--shadow);padding:16px 22px 14px;
@@ -32,34 +34,41 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 }
 .bar h1{margin:0;font-size:1.15rem;letter-spacing:-.02em}
 .bar .kicker{margin:0;font-size:.68rem;letter-spacing:.14em;font-weight:800;color:var(--muted);text-transform:uppercase}
-.toggle{display:flex;background:#f2f6fb;border-radius:999px;padding:4px;gap:2px}
+.toggle{display:flex;background:#f2f6fb;border-radius:999px;padding:4px;gap:2px;flex-wrap:wrap}
 .toggle button{
-  border:0;background:transparent;padding:8px 14px;border-radius:999px;cursor:pointer;
+  border:0;background:transparent;padding:8px 12px;border-radius:999px;cursor:pointer;
   color:var(--muted);font-weight:700;white-space:nowrap;
 }
 .toggle button.on{background:var(--blue);color:#fff}
-.metrics{display:flex;flex-wrap:wrap;gap:22px 28px;align-items:flex-end}
+.metrics{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end}
 .m span{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;color:var(--muted);text-transform:uppercase}
-.m b{font-size:1.55rem;line-height:1.05}
-.m.blue b{color:var(--blue)}
-.m.ok b{color:var(--ok)}
+.m b{font-size:1.45rem;line-height:1.05}
 .m.navy b{color:var(--navy)}
-.bars{min-width:220px}
-.bars .lab{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:4px}
+.m.admin b{color:var(--admin)}
+.m.app b{color:var(--app)}
+.m.dev b{color:var(--dev)}
+.m.qa b{color:var(--qa)}
+.bars{min-width:260px}
+.bars .lab{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;margin-bottom:4px}
+.bars .lab .d{color:var(--dev)}
+.bars .lab .q{color:var(--qa)}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
-.track i{height:100%;display:block}
-.track .dev{width:100%;background:var(--blue)}
+.track .dev{width:87.5%;background:var(--dev)}
+.track .qa{width:12.5%;background:var(--qa)}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
-/* ===== MACRO TREE ===== */
 .tree{margin-top:28px;display:flex;flex-direction:column;align-items:center}
 .node{
   background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;
-  box-shadow:0 4px 12px rgba(30,58,95,.05);text-align:center;position:relative;
+  box-shadow:0 4px 12px rgba(30,58,95,.05);text-align:center;
 }
 .node.epic{border:2px solid var(--blue);color:var(--blue);font-weight:800}
 .node.branch{font-weight:800}
+.node.admin{border-top:4px solid var(--admin);color:var(--admin-d)}
+.node.app{border-top:4px solid var(--app);color:var(--app-d)}
 .node .hrs{display:inline-block;margin-left:8px;background:var(--ice);color:var(--blue-d);border-radius:999px;padding:2px 8px;font-size:.75rem}
+.node.admin .hrs{background:#e3fcef;color:var(--admin-d)}
+.node.app .hrs{background:#eae6ff;color:var(--app-d)}
 .vline{width:2px;height:18px;background:#c5d5e6}
 .hline-wrap{width:72%;max-width:980px;height:18px;position:relative}
 .hline-wrap:before{content:"";position:absolute;left:18%;right:18%;top:0;height:2px;background:#c5d5e6}
@@ -67,45 +76,34 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .drop{display:flex;justify-content:center;gap:28px;width:100%}
 .drop > .col{display:flex;flex-direction:column;align-items:center;flex:1;max-width:720px}
 .drop .stem{width:2px;height:16px;background:#c5d5e6}
-.pack{
-  width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;
-  padding:10px;box-shadow:0 6px 16px rgba(30,58,95,.05);
-}
-.pack h3{
-  margin:0 0 8px;padding:8px 10px;border-radius:10px;font-size:.82rem;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.pack.reuse h3{background:#e8f6fb;color:var(--ok)}
-.pack.build h3{background:var(--ice);color:var(--blue-d)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
-.leaf{
-  background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);
-  border-radius:10px;padding:8px 10px;min-height:74px;
-}
-.pack.reuse .leaf{border-left-color:var(--ok)}
+.pack{width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:0 6px 16px rgba(30,58,95,.05)}
+.pack h3{margin:0 0 8px;padding:8px 10px;border-radius:10px;font-size:.82rem;display:flex;justify-content:space-between}
+.pack.admin h3{background:#e3fcef;color:var(--admin-d)}
+.pack.app h3{background:#eae6ff;color:var(--app-d)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.leaf{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:8px 10px;min-height:78px}
+.pack.admin .leaf{border-left-color:var(--admin)}
+.pack.app .leaf{border-left-color:var(--app)}
+.leaf.qa{border-left-color:var(--qa)}
 .leaf b{display:block;font-size:.78rem;margin-bottom:4px}
 .leaf span{display:block;font-size:.72rem;color:var(--muted)}
 .leaf .hrs{float:right;background:#f3f7fc;border-radius:999px;padding:1px 6px;font-size:.68rem;font-weight:800;color:var(--navy)}
 
-/* ===== DETAIL WBS ===== */
 .wbs{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
-.wbs-tools{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;background:#f8fbfe;border-bottom:1px solid var(--line)}
+.wbs-tools{display:flex;justify-content:flex-end;gap:8px;padding:10px 12px;background:#f8fbfe}
 .wbs-tools button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;cursor:pointer;font-weight:700;color:var(--navy)}
 .grp{border-bottom:1px solid var(--line)}
 .grp:last-child{border-bottom:0}
-.gh{
-  width:100%;border:0;cursor:pointer;display:flex;align-items:center;gap:10px;
-  padding:12px 16px;font-weight:800;color:#fff;text-align:left;
-}
+.gh{width:100%;border:0;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 16px;font-weight:800;color:#fff;text-align:left}
 .gh.blue{background:var(--blue)}
 .gh.navy{background:var(--navy)}
-.gh.ok{background:var(--ok)}
+.gh.admin{background:var(--admin)}
+.gh.app{background:var(--app)}
+.gh.dev{background:var(--dev)}
+.gh.qa{background:var(--qa)}
 .gh .right{margin-left:auto;display:flex;gap:6px;align-items:center}
 .pill{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 8px;font-size:.72rem}
-.row{
-  display:flex;align-items:flex-start;gap:10px;padding:10px 16px 10px 36px;
-  border-top:1px solid #eef3f8;background:#fff;
-}
+.row{display:flex;align-items:flex-start;gap:10px;padding:10px 16px 10px 36px;border-top:1px solid #eef3f8;background:#fff}
 .row.l2{padding-left:56px;background:#fbfdff}
 .row .t{flex:1}
 .row .t b{display:block;font-size:.88rem}
@@ -114,29 +112,56 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .tag{border-radius:999px;padding:3px 8px;font-size:.7rem;font-weight:800}
 .tag.dev{background:var(--ice);color:var(--blue-d)}
 .tag.tot{background:#eef2f6;color:var(--navy)}
-.tag.dep{background:#fff;border:1px solid var(--blue);color:var(--blue);font-weight:700}
+.tag.admin{background:#e3fcef;color:var(--admin-d)}
+.tag.app{background:#eae6ff;color:var(--app-d)}
+.tag.qa{background:#ffebe6;color:var(--qa)}
 .hidden{display:none}
 
-/* ===== FLUXO DO PROCESSO ===== */
-.flow-board{
-  margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;
-  box-shadow:var(--shadow);padding:10px;overflow-x:auto;
-}
+.flow-board{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;overflow-x:auto}
 .flow-board svg{display:block;width:100%;height:auto}
-@media(max-width:900px){
-  .toggle button{padding:8px 10px;font-size:.82rem}
-}
+.flow-cap{margin:8px 6px 0;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+.hire{margin-top:16px;padding:16px;overflow-x:auto}
+.hire-title{margin:0 0 12px;font-size:.9rem}
+.lane{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;margin-bottom:16px}
+.lane-lab{font-size:.68rem;font-weight:800;letter-spacing:.08em;color:var(--muted)}
+.steps{display:flex;align-items:center;gap:8px;min-width:980px}
+.box{min-width:118px;max-width:140px;border:1.5px solid #c7cde0;border-radius:8px;padding:8px;text-align:center;font-size:.68rem;font-weight:700;line-height:1.25;background:#efe6ff;color:#4c1d95}
+.box.round{border-radius:999px}
+.box.cyan{background:#d9f6ff;border-color:#7dd3fc;color:#0c4a6e}
+.box.yellow{background:#fff4cc;border-color:#f5c518;color:#7c5800}
+.box.white{background:#fff;border-color:#94a3b8;color:#1e293b}
+.box.cloud{border-radius:18px 18px 10px 10px;background:#fff}
+.arrs{color:#94a3b8;font-weight:800;flex:0 0 auto}
+.notes{display:flex;gap:10px;margin-top:8px;flex-wrap:wrap}
+.note-c{background:#d9f6ff;border-radius:10px;padding:10px 12px;max-width:360px;font-size:.75rem;color:#0c4a6e}
+.note-r{background:#fecaca;border-radius:10px;padding:10px 12px;max-width:220px;font-size:.8rem;font-weight:800;color:#7f1d1d}
+
+.eap{margin-top:18px}
+.eap-block{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:14px;overflow:hidden;box-shadow:var(--shadow)}
+.eap-h{padding:12px 16px;color:#fff;font-weight:800;display:flex;justify-content:space-between;align-items:center}
+.eap-h.admin{background:linear-gradient(135deg,#00875a,#006644)}
+.eap-h.app{background:linear-gradient(135deg,#6554c0,#403294)}
+.eap-fase{padding:10px 14px 6px;border-top:1px solid var(--line)}
+.eap-fase h3{margin:0 0 8px;font-size:.82rem;display:flex;justify-content:space-between;color:#c25100}
+.eap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;padding-bottom:8px}
+.eap-card{border:1px solid var(--line);border-top:4px solid var(--admin);border-radius:10px;padding:10px 12px}
+.eap-block.app .eap-card{border-top-color:var(--app)}
+.eap-card.qa{border-top-color:var(--qa)}
+.eap-card b{display:block;font-size:.8rem}
+.eap-card p{margin:4px 0 0;font-size:.75rem;color:var(--muted)}
+.eap-card .hrs{float:right;background:#f3f7fc;border-radius:999px;padding:1px 7px;font-size:.68rem;font-weight:800}
 
 .note{margin:14px 16px;padding:12px 14px;border-radius:12px;background:var(--ice);color:var(--navy)}
 .links{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px}
 .links a{text-decoration:none;color:var(--blue-d);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:700;background:#fff}
-pre{margin:8px 0 0;background:var(--navy);color:#eaf3ff;border-radius:10px;padding:12px;overflow:auto;font-size:.75rem}
 
 @media(max-width:900px){
   .bar{grid-template-columns:1fr}
   .bar-right{align-items:flex-start}
   .drop{flex-direction:column;align-items:stretch}
   .hline-wrap{display:none}
+  .toggle button{padding:8px 10px;font-size:.82rem}
 }
 </style>
 </head>
@@ -153,54 +178,53 @@ pre{margin:8px 0 0;background:var(--navy);color:#eaf3ff;border-radius:10px;paddi
       <button id="btnMacro" class="on" type="button">Visão Macro</button>
       <button id="btnFluxo" type="button">Fluxo</button>
       <button id="btnDet" type="button">Detalhamento</button>
+      <button id="btnEap" type="button">Estrutura</button>
     </div>
   </div>
   <div class="metrics">
-    <div class="m navy"><span>Total alvo</span><b>6 du</b></div>
-    <div class="m blue"><span>Entrega</span><b>7 cards</b></div>
-    <div class="m ok"><span>Reuso</span><b>4 blocos</b></div>
-    <div class="m navy"><span>APIs Soluti</span><b>3</b></div>
-    <div class="m blue"><span>Agentes</span><b>5</b></div>
+    <div class="m navy"><span>Total do Projeto</span><b>48h</b></div>
+    <div class="m admin"><span>Admin (Total)</span><b>36h</b></div>
+    <div class="m app"><span>App (Total)</span><b>12h</b></div>
+    <div class="m dev"><span>Desenvolvimento</span><b>42h</b></div>
+    <div class="m qa"><span>Testes e Q.A.</span><b>6h</b></div>
   </div>
   <div class="bars">
-    <div class="lab"><span>Esforço da entrega</span><span>6,0 du</span></div>
-    <div class="track"><i class="dev"></i></div>
+    <div class="lab"><span class="d">Desenvolvimento (87,5%)</span><span class="q">Q.A. (12,5%)</span></div>
+    <div class="track"><i class="dev"></i><i class="qa"></i></div>
   </div>
 </header>
 
 <section id="macro" class="tree">
-  <div class="node epic">Épico: Emissão A1 Soluti WS <span class="hrs">6 du</span></div>
+  <div class="node epic">Épico: Emissão A1 Soluti WS <span class="hrs">48h · 6 du</span></div>
   <div class="vline"></div>
   <div class="hline-wrap"></div>
   <div class="drop">
     <div class="col">
       <div class="stem"></div>
-      <div class="node branch">Reuso / já existe</div>
+      <div class="node branch admin">Admin (Total) <span class="hrs">36h</span></div>
       <div class="stem"></div>
-      <div class="pack reuse">
-        <h3>Não será refeito</h3>
+      <div class="pack admin">
+        <h3>Plataforma · 33h dev + 3h QA</h3>
         <div class="cards">
-          <div class="leaf"><b>Voucher GVS</b><span>Certifier\Voucher + CACertificado</span></div>
-          <div class="leaf"><b>Destino PFX</b><span>Certificados + S3 nfse + eNotas</span></div>
-          <div class="leaf"><b>Upload manual</b><span>Permanece como fallback</span></div>
-          <div class="leaf"><b>Esqueleto Certifier</b><span>Certifyer, Emitter, Files, Certificate</span></div>
+          <div class="leaf"><span class="hrs">4h</span><b>SOL-101 Persistência</b><span>Salvamento de dados de emissão do usuário</span></div>
+          <div class="leaf"><span class="hrs">16h</span><b>SOL-102 + SOL-103</b><span>Autenticação e criptografia de comunicação</span></div>
+          <div class="leaf"><span class="hrs">6h</span><b>SOL-104 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
+          <div class="leaf"><span class="hrs">4h</span><b>SOL-105 Gravação</b><span>Gravação de certificado e envio para Enotas + S3</span></div>
+          <div class="leaf"><span class="hrs">3h</span><b>SOL-106 UX</b><span>Melhorias de interface no admin</span></div>
+          <div class="leaf qa"><span class="hrs">3h</span><b>SOL-107 QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
     <div class="col">
       <div class="stem"></div>
-      <div class="node branch">Entrega <span class="hrs">6 du</span></div>
+      <div class="node branch app">App (Total) <span class="hrs">12h</span></div>
       <div class="stem"></div>
-      <div class="pack build">
-        <h3>Desenvolver · 7 cards</h3>
+      <div class="pack app">
+        <h3>Cliente · 9h dev + 3h QA</h3>
         <div class="cards">
-          <div class="leaf"><span class="hrs">0,5 du</span><b>SOL-101 Persistência</b><span>Estado mínimo da emissão</span></div>
-          <div class="leaf"><span class="hrs">0,75 du</span><b>SOL-102 HMAC</b><span>Sessão, nonce, form-data, ENV</span></div>
-          <div class="leaf"><span class="hrs">1,25 du</span><b>SOL-103 Crypto + PFX</b><span>CSR, chave cifrada, PKCS7</span></div>
-          <div class="leaf"><span class="hrs">1,25 du</span><b>SOL-104 Orquestração</b><span>Polling, estados 0/1/2/8/9</span></div>
-          <div class="leaf"><span class="hrs">0,5 du</span><b>SOL-105 Gravação</b><span>Certificados + S3 + eNotas</span></div>
-          <div class="leaf"><span class="hrs">1,0 du</span><b>SOL-106 UX</b><span>App + Admin, status, download</span></div>
-          <div class="leaf"><span class="hrs">0,75 du</span><b>SOL-107 QA</b><span>E2E homologação + regressão</span></div>
+          <div class="leaf"><span class="hrs">4h</span><b>SOL-104 Orquestração</b><span>Rotinas de emissão e recuperação de certificado</span></div>
+          <div class="leaf"><span class="hrs">5h</span><b>SOL-106 UX</b><span>Criar melhorias de interface para o fluxo novo</span></div>
+          <div class="leaf qa"><span class="hrs">3h</span><b>SOL-107 QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
@@ -208,6 +232,7 @@ pre{margin:8px 0 0;background:var(--navy);color:#eaf3ff;border-radius:10px;paddi
 </section>
 
 <section id="fluxo" class="hidden">
+  <p class="flow-cap">Fluxo do processo no sistema</p>
   <div class="flow-board">
     <svg viewBox="0 0 1380 680" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fluxo do processo no sistema">
   <defs>
@@ -408,6 +433,54 @@ pre{margin:8px 0 0;background:var(--navy);color:#eaf3ff;border-radius:10px;paddi
   </g>
 </svg>
   </div>
+
+  <p class="flow-cap">Fluxo de contratação Soluti</p>
+  <div class="flow-board hire">
+    <h2 class="hire-title">Atual × novo</h2>
+    <div class="lane">
+      <div class="lane-lab">ATUAL</div>
+      <div class="steps">
+        <div class="box round">Cliente quer certificado</div><span class="arrs">→</span>
+        <div class="box">Contrato de voucher</div><span class="arrs">→</span>
+        <div class="box">Recebeu o voucher</div><span class="arrs">→</span>
+        <div class="box">Cliente com o voucher acessa o site da Soluti e marca uma reunião com eles</div><span class="arrs">→</span>
+        <div class="box">A Soluti gera um certificado e envia para o usuário</div><span class="arrs">→</span>
+        <div class="box round">O usuário cadastra o certificado no nosso sistema</div>
+      </div>
+    </div>
+    <div class="lane">
+      <div class="lane-lab">NOVO</div>
+      <div class="steps">
+        <div class="box round">Cliente quer certificado</div><span class="arrs">→</span>
+        <div class="box">Contrato de voucher</div><span class="arrs">→</span>
+        <div class="box">Recebeu o voucher</div><span class="arrs">→</span>
+        <div class="box">Cliente com o voucher acessa o site da Soluti e marca uma reunião com eles</div><span class="arrs">→</span>
+        <div class="box cyan">Cliente recebe o identificador de emissão e a senha de emissão</div><span class="arrs">→</span>
+        <div class="box cyan">A senha do certificado dele</div><span class="arrs">→</span>
+        <div class="box yellow round">Fluxo novo</div>
+      </div>
+    </div>
+    <div class="lane">
+      <div class="lane-lab">FLUXO NOVO</div>
+      <div>
+        <div class="steps">
+          <div class="box yellow round">Fluxo novo</div><span class="arrs">→ sucesso</span>
+          <div class="box white">Emitir o certificado</div><span class="arrs">→</span>
+          <div class="box white cloud">Vai preencher as infos do sistema</div><span class="arrs">→</span>
+          <div class="box yellow round">O cliente pode baixar se quiser o certificado</div>
+        </div>
+        <div class="steps" style="margin-top:10px;padding-left:128px">
+          <span class="arrs">falha →</span>
+          <div class="box white cloud">Como eu vou interagir com o usuário em caso de falha?</div><span class="arrs">→</span>
+          <div class="box white cloud">Dados de cadastro ou dados de emissão</div>
+        </div>
+      </div>
+    </div>
+    <div class="notes">
+      <div class="note-c">O código da solicitação (número de usuário) é informado ao cliente via e-mail após a aprovação do Certificado Digital; a senha de emissão é tratada pelo cliente no momento da solicitação na AR.</div>
+      <div class="note-r">Manter a importação manual que já temos</div>
+    </div>
+  </div>
 </section>
 
 <section id="detalhe" class="hidden">
@@ -418,124 +491,79 @@ pre{margin:8px 0 0;background:var(--navy);color:#eaf3ff;border-radius:10px;paddi
   <div class="wbs">
 
     <div class="grp" data-open="1">
-      <button class="gh blue" type="button">Objetivo e esforço <span class="right"><span class="pill">6 du</span></span></button>
+      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">48h · 6 du</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>Eliminar o upload manual e o Web Assistant para o fluxo Soluti. A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo no fluxo já existente.</p></div></div>
-        <div class="row l2"><div class="t"><b>Estimativa alvo</b><p>Com agentes, reaproveitamento do código existente e tarefas em paralelo. Esforço alvo, não prazo de calendário.</p></div><div class="meta"><span class="tag tot">6,0 du</span></div></div>
+        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">48h</span></div></div>
+        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>Persistência, HMAC/crypto, crons de recuperação, gravação e UX do admin.</p></div><div class="meta"><span class="tag admin">36h</span></div></div>
+        <div class="row l2"><div class="t"><b>App (Total)</b><p>APIs do fluxo novo e melhorias de interface para o cliente.</p></div><div class="meta"><span class="tag app">12h</span></div></div>
+        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>Entrega funcional sem a fatia exclusiva de testes.</p></div><div class="meta"><span class="tag dev">42h</span></div></div>
+        <div class="row l2"><div class="t"><b>Testes e Q.A.</b><p>Homologação E2E e regressão do processo.</p></div><div class="meta"><span class="tag qa">6h</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh ok" type="button">Reuso / já existe <span class="right"><span class="pill">4 blocos</span></span></button>
+      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">36h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Voucher GVS</b><p><code>Certifier\Voucher</code> + <code>CACertificado</code>, geração/consulta/cancelamento. Já existe em produção. Não será refeito.</p></div></div>
-        <div class="row"><div class="t"><b>Destino do certificado</b><p><code>Certificados</code>, S3 bucket <code>nfse</code> e integração com eNotas.</p></div></div>
-        <div class="row"><div class="t"><b>Upload manual</b><p>Fluxo atual continua como fallback.</p></div></div>
-        <div class="row"><div class="t"><b>Estrutura Certifier</b><p>Esqueletos de <code>Certifyer</code>, <code>Emitter</code>, <code>Files</code> e <code>Certificate</code>.</p></div></div>
+        <div class="row"><div class="t"><b>SOL-101 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-102 HMAC + SOL-103 Crypto + PFX</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">16h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-104 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-105 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-106 UX</b><p>Melhorias de interface no admin para o fluxo novo.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-107 QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh blue" type="button">Entrega · desenvolver <span class="right"><span class="pill">6,0 du</span></span></button>
+      <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">12h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>1 Persistência</b><p>SOL-101 Inventário rápido + persistência mínima. Confirmar schema/call sites e criar apenas o estado necessário. Decisão sem reescrever legado.</p></div><div class="meta"><span class="tag tot">0,5 du</span></div></div>
-        <div class="row"><div class="t"><b>2 HMAC</b><p>SOL-102 Cliente HMAC + configuração. ENV, HMAC sem/com sessão, cookies, form-data e tratamento básico de erros.</p></div><div class="meta"><span class="tag tot">0,75 du</span></div></div>
-        <div class="row"><div class="t"><b>3 Crypto + PFX</b><p>SOL-103 Gerar CSR, cifrar private key, emitir, recuperar PKCS7 e corrigir montagem do PFX.</p></div><div class="meta"><span class="tag tot">1,25 du</span></div></div>
-        <div class="row"><div class="t"><b>4 Orquestração</b><p>SOL-104 Service central, idempotência, worker/cron e transições 0/1/2/8/9.</p></div><div class="meta"><span class="tag tot">1,25 du</span></div></div>
-        <div class="row"><div class="t"><b>5 Gravação</b><p>SOL-105 Reusar Certificados, S3 e eNotas; validar PFX antes de persistir.</p></div><div class="meta"><span class="tag tot">0,5 du</span></div></div>
-        <div class="row"><div class="t"><b>6 UX App + Admin</b><p>SOL-106 Formulário, confirmação dos dados, acompanhamento, erros e download.</p></div><div class="meta"><span class="tag tot">1,0 du</span></div></div>
-        <div class="row"><div class="t"><b>7 QA + homologação</b><p>SOL-107 Emissão E2E na AR de homologação, regressão do voucher/upload/SafeWeb e varredura de logs.</p></div><div class="meta"><span class="tag tot">0,75 du</span></div></div>
-        <div class="note"><strong>Total alvo 6,0 du.</strong> Execução paralela com agentes quando as dependências permitirem.</div>
+        <div class="row"><div class="t"><b>SOL-104 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-106 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div><div class="meta"><span class="tag tot">5h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>SOL-107 QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" data-open="1">
+      <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">42h</span></span></button>
+      <div class="body">
+        <div class="row"><div class="t"><b>SOL-101 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">4h</span></div></div>
+        <div class="row"><div class="t"><b>SOL-102 HMAC + SOL-103 Crypto + PFX</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">16h</span></div></div>
+        <div class="row"><div class="t"><b>SOL-104 Orquestração</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">10h</span></div></div>
+        <div class="row"><div class="t"><b>SOL-105 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">4h</span></div></div>
+        <div class="row"><div class="t"><b>SOL-106 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" data-open="1">
+      <button class="gh qa" type="button">Testes e Q.A. <span class="right"><span class="pill">6h</span></span></button>
+      <div class="body">
+        <div class="row"><div class="t"><b>SOL-107 QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e SafeWeb.</p></div><div class="meta"><span class="tag qa">6h</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
       <button class="gh navy" type="button">Responsabilidades <span class="right"><span class="pill">Cliente × ContaÁgil</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Cliente / titular</b><p>Solicitar/autorizar o certificado e realizar a validação exigida pela AR Soluti. Após a aprovação, possuir o código/número da solicitação. Fornecer a senha de emissão cadastrada (HMAC). Definir a senha de uso do PFX (senhaCert). Conferir os dados retornados pela Soluti antes do disparo. Baixar o PFX pela ContaÁgil.</p></div></div>
-        <div class="row"><div class="t"><b>ContaÁgil</b><p>Gerar/gerenciar o voucher GVS. Consultar a solicitação no WS. Gerar RSA 2048 e CSR PKCS#10. Proteger a chave privada. Autenticar HMAC com a senha de emissão. Disparar emissão e acompanhar status. Recuperar certificado, montar PFX, salvar em Certificados + S3 + eNotas. Download e reprocessamento.</p></div></div>
-        <div class="note"><strong>Importante:</strong> senha de emissão e senha do PFX são coisas diferentes. A primeira autentica o WebService. A segunda protege o arquivo entregue ao cliente.</div>
+        <div class="row"><div class="t"><b>Cliente / titular</b><p>Solicitar o certificado e fazer a validação da AR Soluti. Após a aprovação, possuir o código da solicitação. Informar senha de emissão e senha do PFX. Conferir os dados e baixar o certificado pela ContaÁgil.</p></div></div>
+        <div class="row"><div class="t"><b>ContaÁgil</b><p>Validar a solicitação, emitir, recuperar, montar o PFX, gravar em Certificados + S3 + eNotas e disponibilizar o download.</p></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh blue" type="button">Fluxo desejado e estados <span class="right"><span class="pill">0 → 2</span></span></button>
+      <button class="gh blue" type="button">Arquitetura e WebService <span class="right"><span class="pill">3 APIs</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>1. Solicitação</b><p>Cliente conclui AR</p></div></div>
-        <div class="row"><div class="t"><b>2. Dados</b><p>Solicitação + senhas</p></div></div>
-        <div class="row"><div class="t"><b>3. Confirmação</b><p>CN / CNPJ / categoria / validade</p></div></div>
-        <div class="row"><div class="t"><b>4. CSR</b><p>RSA 2048 no servidor</p></div></div>
-        <div class="row"><div class="t"><b>5. Soluti</b><p>Emitir → poll → recuperar</p></div></div>
-        <div class="row"><div class="t"><b>6. PFX</b><p>Salvar e disponibilizar</p></div></div>
-        <div class="row l2"><div class="t"><b>Estados da emissão</b><p>0 Aguardando CSR · 1 Par de chaves gerado · 2 Certificado emitido · 8 Erro de envio · 9 Erro de emissão / contato AR</p></div></div>
-      </div>
-    </div>
-
-    <div class="grp" data-open="1">
-      <button class="gh navy" type="button">Arquitetura e WebService <span class="right"><span class="pill">3 APIs</span></span></button>
-      <div class="body">
-        <div class="row"><div class="t"><b>Camadas</b>
-<pre>App / Admin
-    ↓
-Controller fino
-    ↓
-Service de emissão Soluti
-    ├── Finder / persistência
-    ├── Certifier / HMAC + HTTP
-    ├── Crypto / private key cifrada
-    └── Worker / polling
-             ↓
-        WebService Soluti
-             ↓
-      PKCS7 + private key
-             ↓
-        PFX + senhaCert
-             ↓
-      Certificados + S3 + eNotas</pre>
-        </div></div>
         <div class="row"><div class="t"><b>valida-dados-emissao</b><p>Validar solicitação e consultar status</p></div><div class="meta"><span class="tag dev">Integrar</span></div></div>
         <div class="row"><div class="t"><b>emitir-certificado</b><p>Enviar CSR e iniciar emissão</p></div><div class="meta"><span class="tag dev">Integrar</span></div></div>
         <div class="row"><div class="t"><b>recuperar-certificado</b><p>Recuperar PKCS7 após status 2</p></div><div class="meta"><span class="tag dev">Integrar</span></div></div>
-        <div class="row l2"><div class="t"><b>Não misturar com SafeWeb</b><p><code>EmissorCertificado=SAFEWEB</code> continua no fluxo atual. A nova emissão usa o ramo Soluti WS.</p></div></div>
-        <div class="row l2"><div class="t"><b>Idempotência</b><p>Depois que o CSR for enviado, reutilizar o mesmo par de chaves para aquela solicitação.</p></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh blue" type="button">Agentes em paralelo <span class="right"><span class="pill">5</span></span></button>
+      <button class="gh navy" type="button">Critérios de aceite</button>
       <div class="body">
-        <div class="row"><div class="t"><b>Agente 1 · Soluti / HMAC</b><p>Cliente HTTP, autenticação e endpoints.</p></div><div class="meta"><span class="tag dep">Deps: SOL-102</span></div></div>
-        <div class="row"><div class="t"><b>Agente 2 · Crypto / OpenSSL</b><p>RSA, CSR, cifragem e PFX.</p></div><div class="meta"><span class="tag dep">Deps: SOL-103</span></div></div>
-        <div class="row"><div class="t"><b>Agente 3 · Persistência</b><p>Migration, Finder, estados e integração.</p></div><div class="meta"><span class="tag dep">Deps: SOL-101, SOL-105</span></div></div>
-        <div class="row"><div class="t"><b>Agente 4 · UX</b><p>App/Admin, estados, confirmação e download.</p></div><div class="meta"><span class="tag dep">Deps: SOL-106</span></div></div>
-        <div class="row"><div class="t"><b>Agente 5 · QA</b><p>Testes, smoke e regressão após os blocos principais.</p></div><div class="meta"><span class="tag dep">Deps: SOL-107</span></div></div>
-        <div class="note"><strong>Estratégia:</strong> não transformar cada pequeno ajuste em uma etapa sequencial. Os agentes trabalham em blocos independentes e a integração final acontece quando as interfaces entre persistência, Emitter e Service estiverem definidas.</div>
-      </div>
-    </div>
-
-    <div class="grp" data-open="1">
-      <button class="gh navy" type="button">Segurança e convivência <span class="right"><span class="pill">Regras</span></span></button>
-      <div class="body">
-        <div class="row"><div class="t"><b>Não fazer · Private key em claro</b><p>O esqueleto atual grava arquivos em claro; o novo fluxo não pode manter esse comportamento.</p></div></div>
-        <div class="row"><div class="t"><b>Não fazer · Segredos no Git</b><p>URL, chaves e credenciais devem vir de configuração/ENV.</p></div></div>
-        <div class="row"><div class="t"><b>Não fazer · Senha em log</b><p>Não registrar senha de emissão, senha PFX, private key, HMAC, PEM ou PKCS7 completo.</p></div></div>
-        <div class="row"><div class="t"><b>Fazer · Chave cifrada</b><p>Persistir a private key protegida até a montagem do PFX e eliminar o material transitório depois.</p></div></div>
-        <div class="row l2"><div class="t"><b>Voucher GVS</b><p>Permanece exatamente no fluxo atual.</p></div></div>
-        <div class="row l2"><div class="t"><b>Upload manual</b><p>Permanece como fallback.</p></div></div>
-        <div class="row l2"><div class="t"><b>eNotas</b><p>Recebe o certificado pelo mesmo caminho já existente.</p></div></div>
-        <div class="row l2"><div class="t"><b>SafeWeb</b><p>Não faz parte desta implementação. Deve continuar funcionando sem alteração.</p></div></div>
-      </div>
-    </div>
-
-    <div class="grp" data-open="1">
-      <button class="gh ok" type="button">Critérios de aceite <span class="right"><span class="pill">6</span></span></button>
-      <div class="body">
-        <div class="row"><div class="t"><b>Emissão</b><p>Uma solicitação aprovada consegue percorrer o fluxo Soluti até status 2.</p></div></div>
+        <div class="row"><div class="t"><b>Emissão</b><p>Solicitação aprovada percorre o fluxo Soluti até status 2.</p></div></div>
         <div class="row"><div class="t"><b>PFX</b><p>O PFX abre com a senha definida pelo cliente.</p></div></div>
-        <div class="row"><div class="t"><b>Persistência</b><p>O certificado aparece no fluxo existente de Certificados/S3/eNotas.</p></div></div>
-        <div class="row"><div class="t"><b>Download</b><p>Cliente consegue baixar o certificado sem upload manual.</p></div></div>
-        <div class="row"><div class="t"><b>Erros</b><p>403, 409, 429, status 8 e 9 possuem tratamento acionável.</p></div></div>
-        <div class="row"><div class="t"><b>Regressão</b><p>Voucher, upload manual e SafeWeb continuam operacionais.</p></div></div>
+        <div class="row"><div class="t"><b>Gravação</b><p>Certificado em Certificados / S3 / eNotas.</p></div></div>
+        <div class="row"><div class="t"><b>Download</b><p>Cliente baixa sem upload manual, mantendo a importação manual que já existe.</p></div></div>
       </div>
     </div>
 
@@ -547,9 +575,72 @@ Service de emissão Soluti
           <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/webservice/validar-dados-emissao">Validar dados</a>
           <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/webservice/emitir-certificado">Emitir certificado</a>
           <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/webservice/recuperar-certificado">Recuperar certificado</a>
-          <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/pool/busca-urls">Busca URLs</a>
-          <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/pool/dados-ar">Dados AR</a>
-          <a href="https://solutidigital.gitbook.io/emissao-de-certificado-via-webservice/glossario">Glossário</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="estrutura" class="hidden">
+  <div class="eap">
+    <div class="eap-block">
+      <div class="eap-h admin"><span>ADMIN (Plataforma)</span><span>36h</span></div>
+      <div class="eap-fase">
+        <h3>1 BackEnd <span>16h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">16h</span><b>SOL-102 + SOL-103</b><p>Autenticação e criptografia de comunicação (HMAC, CSR, chave cifrada, PFX).</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>2 FrontEnd <span>3h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">3h</span><b>SOL-106 UX Admin</b><p>Criar melhorias de interface para o fluxo novo no admin.</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>3 Banco de Dados <span>4h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">4h</span><b>SOL-101 Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>4 Crons <span>6h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">6h</span><b>SOL-104 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (polling assíncrono).</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>5 Integrações <span>4h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">4h</span><b>SOL-105 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>6 Testes e Q.A. <span>3h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card qa"><span class="hrs">3h</span><b>SOL-107 QA</b><p>Homologação + regressão do processo no admin.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="eap-block app">
+      <div class="eap-h app"><span>APP (Cliente)</span><span>12h</span></div>
+      <div class="eap-fase">
+        <h3>1 BackEnd <span>4h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">4h</span><b>SOL-104 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app.</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>2 FrontEnd <span>5h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card"><span class="hrs">5h</span><b>SOL-106 UX</b><p>Criar melhorias de interface para o fluxo novo.</p></div>
+        </div>
+      </div>
+      <div class="eap-fase">
+        <h3>3 Testes e Q.A. <span>3h</span></h3>
+        <div class="eap-grid">
+          <div class="eap-card qa"><span class="hrs">3h</span><b>SOL-107 QA</b><p>Homologação + regressão do processo no app.</p></div>
         </div>
       </div>
     </div>
@@ -561,12 +652,14 @@ Service de emissão Soluti
 const views = {
   macro: document.getElementById('macro'),
   fluxo: document.getElementById('fluxo'),
-  detalhe: document.getElementById('detalhe')
+  detalhe: document.getElementById('detalhe'),
+  estrutura: document.getElementById('estrutura')
 };
 const btns = {
   macro: document.getElementById('btnMacro'),
   fluxo: document.getElementById('btnFluxo'),
-  detalhe: document.getElementById('btnDet')
+  detalhe: document.getElementById('btnDet'),
+  estrutura: document.getElementById('btnEap')
 };
 function show(which){
   Object.keys(views).forEach(k => {
@@ -577,6 +670,7 @@ function show(which){
 btns.macro.onclick = () => show('macro');
 btns.fluxo.onclick = () => show('fluxo');
 btns.detalhe.onclick = () => show('detalhe');
+btns.estrutura.onclick = () => show('estrutura');
 document.querySelectorAll('.gh').forEach(btn => {
   btn.addEventListener('click', () => {
     const grp = btn.parentElement;
