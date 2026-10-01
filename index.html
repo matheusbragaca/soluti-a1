@@ -19,6 +19,7 @@
   --app-d:#403294;
   --qa:#ff5630;
   --dev:#0052cc;
+  --refine:#0f766e;
   --shadow:0 10px 30px rgba(30,58,95,.08);
 }
 *{box-sizing:border-box}
@@ -48,24 +49,30 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .m.app b{color:var(--app)}
 .m.dev b{color:var(--dev)}
 .m.qa b{color:var(--qa)}
+.m.refine b{color:var(--refine)}
 .bars{min-width:260px}
 .bars .lab{display:flex;justify-content:space-between;font-size:.72rem;font-weight:700;margin-bottom:4px}
 .bars .lab .d{color:var(--dev)}
 .bars .lab .q{color:var(--qa)}
 .bars .lab .u{color:#c25100}
+.bars .lab .r{color:var(--refine)}
 .m.ux b{color:#c25100}
 .tag.ux{background:#fff4cc;color:#7c5800}
+.tag.refine{background:#ccfbf1;color:#115e59}
 .gh.ux{background:#c25100}
-.eap-h.ux,.eap-h.admin,.eap-h.app{width:100%;border:0;cursor:pointer;font:inherit;text-align:left}
+.gh.refine{background:var(--refine)}
 .node.ux{border-top:4px solid #ff991f;color:#7c5800}
 .node.ux .hrs{background:#fff4cc;color:#7c5800}
+.node.refine{border-top:4px solid var(--refine);color:#115e59}
+.node.refine .hrs{background:#ccfbf1;color:#115e59}
+.node .sub{display:block;margin-top:4px;font-size:.72rem;font-weight:600;color:var(--muted)}
 .pack.ux h3{background:#fff4cc;color:#7c5800}
 .pack.ux .leaf{border-left-color:#ff991f}
-.eap-card.ux{border-top-color:#ff991f}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
-.track .dev{width:63.793%;background:var(--dev)}
-.track .qa{width:10.345%;background:var(--qa)}
-.track .ux{width:25.862%;background:#ff991f}
+.track .dev{width:55.556%;background:var(--dev)}
+.track .ux{width:18.519%;background:#ff991f}
+.track .refine{width:18.519%;background:var(--refine)}
+.track .qa{width:7.407%;background:var(--qa)}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
 .tree{margin-top:28px;display:flex;flex-direction:column;align-items:center}
@@ -190,25 +197,27 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <button id="btnMacro" class="on" type="button">Visão Macro</button>
       <button id="btnFluxo" type="button">Fluxos</button>
       <button id="btnDet" type="button">Detalhamento</button>
-      <button id="btnEap" type="button">Estrutura</button>
     </div>
   </div>
   <div class="metrics">
-    <div class="m navy"><span>Total do Projeto</span><b>116h</b></div>
-    <div class="m admin"><span>Admin (Total)</span><b>50h</b></div>
+    <div class="m navy"><span>Total do Projeto</span><b>162h</b></div>
+    <div class="m admin"><span>Admin (Total)</span><b>66h</b></div>
     <div class="m app"><span>App (Total)</span><b>36h</b></div>
     <div class="m ux"><span>UX/Design</span><b>30h</b></div>
-    <div class="m dev"><span>Desenvolvimento</span><b>74h</b></div>
+    <div class="m refine"><span>Refinamento Técnico</span><b>30h</b></div>
+    <div class="m dev"><span>Desenvolvimento</span><b>90h</b></div>
     <div class="m qa"><span>Testes e QA</span><b>12h</b></div>
   </div>
   <div class="bars">
-    <div class="lab"><span class="d">Desenvolvimento (63,8%)</span><span class="u">UX/Design (25,9%)</span><span class="q">QA (10,3%)</span></div>
-    <div class="track"><i class="dev"></i><i class="ux"></i><i class="qa"></i></div>
+    <div class="lab"><span class="d">Desenvolvimento (55,6%)</span><span class="u">UX/Design (18,5%)</span><span class="r">Refinamento (18,5%)</span><span class="q">QA (7,4%)</span></div>
+    <div class="track"><i class="dev"></i><i class="ux"></i><i class="refine"></i><i class="qa"></i></div>
   </div>
 </header>
 
 <section id="macro" class="tree">
-  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">116h</span></div>
+  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">162h</span></div>
+  <div class="stem"></div>
+  <div class="node branch refine">Refinamento Técnico <span class="hrs">30h</span><span class="sub">Análise e estruturação do projeto</span></div>
   <div class="join" aria-hidden="true">
     <svg viewBox="0 0 1200 52" preserveAspectRatio="none">
       <path d="M600 0 V18 H200 V52 M600 18 V52 M600 18 H1000 V52" fill="none" stroke="#c5d5e6" stroke-width="2"/>
@@ -226,15 +235,18 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       </div>
     </div>
     <div class="col">
-      <div class="node branch admin">Admin (Total) <span class="hrs">50h</span></div>
+      <div class="node branch admin">Admin (Total) <span class="hrs">66h</span></div>
       <div class="stem"></div>
       <div class="pack admin">
-        <h3>Plataforma · 44h dev + 6h QA</h3>
+        <h3>Plataforma · 60h dev + 6h QA</h3>
         <div class="cards">
-          <div class="leaf"><span class="hrs">8h</span><b>Persistência</b><span>Salvamento de dados de emissão do usuário</span></div>
-          <div class="leaf"><span class="hrs">20h</span><b>Autenticação</b><span>Autenticação e criptografia de comunicação</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>Emissão/Recuperação do certificado</b><span>Rotinas de emissão e recuperação de certificado</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação de certificado e envio para Enotas + S3</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Banco de dados</b><span>Salvamento de dados de emissão do usuário</span></div>
+          <div class="leaf"><span class="hrs">20h</span><b>Autenticação nas APIs da Soluti</b><span>Autenticação e criptografia de comunicação</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Frontend</b><span>Telas do fluxo no admin</span></div>
+          <div class="leaf"><span class="hrs">4h</span><b>Emissão do certificado</b><span>Rotina de emissão do certificado</span></div>
+          <div class="leaf"><span class="hrs">4h</span><b>Recuperação do certificado</b><span>Rotina de recuperação do certificado</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação do certificado no admin</span></div>
+          <div class="leaf"><span class="hrs">8h</span><b>Vídeo</b><span>Atividade de vídeo</span></div>
           <div class="leaf qa"><span class="hrs">6h</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
@@ -243,10 +255,12 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <div class="node branch app">App (Total) <span class="hrs">36h</span></div>
       <div class="stem"></div>
       <div class="pack app">
-        <h3>Cliente · 30h dev + 6h QA</h3>
+        <h3>Refatoração Tela · 30h dev + 6h QA</h3>
         <div class="cards">
-          <div class="leaf"><span class="hrs">24h</span><b>Frontend</b><span>Ajustes App Cliente e App Esteira</span></div>
-          <div class="leaf"><span class="hrs">6h</span><b>Emissão/Recuperação do certificado</b><span>Rotinas de emissão e recuperação de certificado</span></div>
+          <div class="leaf"><span class="hrs">12h</span><b>Ajustes App Cliente</b><span>Refatoração Tela</span></div>
+          <div class="leaf"><span class="hrs">12h</span><b>App Esteira</b><span>Refatoração Tela</span></div>
+          <div class="leaf"><span class="hrs">3h</span><b>Emissão do Certificado na Conta Ágil</b><span>Emissão do certificado no app</span></div>
+          <div class="leaf"><span class="hrs">3h</span><b>Recuperação do certificado</b><span>Recuperação do certificado no app</span></div>
           <div class="leaf qa"><span class="hrs">6h</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
@@ -513,14 +527,22 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   <div class="wbs">
 
     <div class="grp" data-open="1">
-      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">116h</span></span></button>
+      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">162h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">116h</span></div></div>
+        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">162h</span></div></div>
+        <div class="row l2"><div class="t"><b>Refinamento Técnico</b><p>Análise e estruturação do projeto.</p></div><div class="meta"><span class="tag refine">30h</span></div></div>
         <div class="row l2"><div class="t"><b>UX/Design</b><p>Revisão das telas e design do fluxo novo.</p></div><div class="meta"><span class="tag ux">30h</span></div></div>
-        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>44h de desenvolvimento + 6h de QA.</p></div><div class="meta"><span class="tag admin">50h</span><span class="tag dev">44h Dev</span><span class="tag qa">6h QA</span></div></div>
+        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>60h de desenvolvimento + 6h de QA.</p></div><div class="meta"><span class="tag admin">66h</span><span class="tag dev">60h Dev</span><span class="tag qa">6h QA</span></div></div>
         <div class="row l2"><div class="t"><b>App (Total)</b><p>30h de desenvolvimento + 6h de QA.</p></div><div class="meta"><span class="tag app">36h</span><span class="tag dev">30h Dev</span><span class="tag qa">6h QA</span></div></div>
-        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>44h Admin + 30h App.</p></div><div class="meta"><span class="tag dev">74h</span></div></div>
+        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>60h Admin + 30h App.</p></div><div class="meta"><span class="tag dev">90h</span></div></div>
         <div class="row l2"><div class="t"><b>Testes e QA</b><p>6h Admin + 6h App.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
+      </div>
+    </div>
+
+    <div class="grp" data-open="1">
+      <button class="gh refine" type="button">Refinamento Técnico <span class="right"><span class="pill">30h</span></span></button>
+      <div class="body">
+        <div class="row"><div class="t"><b>Refinamento Técnico</b><p>Análise e estruturação do projeto.</p></div><div class="meta"><span class="tag tot">30h</span><span class="tag refine">Refinamento</span></div></div>
       </div>
     </div>
 
@@ -532,12 +554,15 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">50h</span><span class="pill">44h Dev</span><span class="pill">6h QA</span></span></button>
+      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">66h</span><span class="pill">60h Dev</span><span class="pill">6h QA</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>Emissão/Recuperação do certificado</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Banco de dados</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação nas APIs da Soluti</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Frontend</b><p>Telas do fluxo no admin.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Emissão do certificado</b><p>Rotina de emissão do certificado.</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Recuperação do certificado</b><p>Rotina de recuperação do certificado.</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Gravação</b><p>Gravação do certificado no admin.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Vídeo</b><p>Atividade de vídeo.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
@@ -545,21 +570,27 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     <div class="grp" data-open="1">
       <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">36h</span><span class="pill">30h Dev</span><span class="pill">6h QA</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Frontend</b><p>Ajustes App Cliente e App Esteira.</p></div><div class="meta"><span class="tag tot">24h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>Emissão/Recuperação do certificado</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Ajustes App Cliente</b><p>Refatoração Tela.</p></div><div class="meta"><span class="tag tot">12h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>App Esteira</b><p>Refatoração Tela.</p></div><div class="meta"><span class="tag tot">12h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Emissão do Certificado na Conta Ágil</b><p>Emissão do certificado no app.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
+        <div class="row"><div class="t"><b>Recuperação do certificado</b><p>Recuperação do certificado no app.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">74h</span></span></button>
+      <button class="gh dev" type="button">Desenvolvimento <span class="right"><span class="pill">90h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Frontend</b><p>Ajustes App Cliente e App Esteira.</p></div><div class="meta"><span class="tag tot">24h</span></div></div>
-        <div class="row"><div class="t"><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="row"><div class="t"><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
-        <div class="row"><div class="t"><b>Emissão/Recuperação do certificado</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">14h</span></div></div>
-        <div class="row"><div class="t"><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="note">44h Admin + 30h App.</div>
+        <div class="row"><div class="t"><b>Ajustes App Cliente</b><p>Refatoração Tela.</p></div><div class="meta"><span class="tag tot">12h</span></div></div>
+        <div class="row"><div class="t"><b>App Esteira</b><p>Refatoração Tela.</p></div><div class="meta"><span class="tag tot">12h</span></div></div>
+        <div class="row"><div class="t"><b>Frontend</b><p>Telas do fluxo no admin.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="row"><div class="t"><b>Banco de dados</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="row"><div class="t"><b>Autenticação nas APIs da Soluti</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
+        <div class="row"><div class="t"><b>Emissão do certificado</b><p>Admin 4h + App 3h.</p></div><div class="meta"><span class="tag tot">7h</span></div></div>
+        <div class="row"><div class="t"><b>Recuperação do certificado</b><p>Admin 4h + App 3h.</p></div><div class="meta"><span class="tag tot">7h</span></div></div>
+        <div class="row"><div class="t"><b>Gravação</b><p>Gravação do certificado no admin.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="row"><div class="t"><b>Vídeo</b><p>Atividade de vídeo.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
+        <div class="note">60h Admin + 30h App.</div>
       </div>
     </div>
 
@@ -611,99 +642,17 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   </div>
 </section>
 
-<section id="estrutura" class="hidden">
-  <div class="wbs-tools">
-    <button type="button" id="expEap">Expandir tudo</button>
-    <button type="button" id="colEap">Recolher tudo</button>
-  </div>
-  <div class="eap">
-    <div class="eap-block" data-open="1">
-      <button class="eap-h ux" type="button"><span>UX/Design</span><span>30h</span></button>
-      <div class="eap-body">
-        <div class="eap-fase">
-          <h3>Design do fluxo novo <span>30h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card ux"><span class="hrs">30h</span><b>UX/Design</b><p>Revisão das telas e design do fluxo novo.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="eap-block" data-open="1">
-      <button class="eap-h admin" type="button"><span>ADMIN (Plataforma)</span><span>50h</span></button>
-      <div class="eap-body">
-        <div class="eap-fase">
-          <h3>1 BackEnd <span>20h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">20h</span><b>Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>3 Banco de Dados <span>8h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>Persistência</b><p>Salvamento de dados de emissão do usuário.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>4 Crons <span>8h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>Emissão/Recuperação do certificado</b><p>Rotinas de emissão e recuperação de certificado (polling assíncrono).</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>5 Integrações <span>8h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">8h</span><b>Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>6 Testes e QA <span>6h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card qa"><span class="hrs">6h</span><b>QA</b><p>Homologação + regressão do processo no admin.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="eap-block app" data-open="1">
-      <button class="eap-h app" type="button"><span>APP (Cliente)</span><span>36h</span></button>
-      <div class="eap-body">
-        <div class="eap-fase">
-          <h3>1 Frontend <span>24h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">24h</span><b>Frontend</b><p>Ajustes App Cliente e App Esteira.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>2 BackEnd <span>6h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card"><span class="hrs">6h</span><b>Emissão/Recuperação do certificado</b><p>Rotinas de emissão e recuperação de certificado no app.</p></div>
-          </div>
-        </div>
-        <div class="eap-fase">
-          <h3>3 Testes e QA <span>6h</span></h3>
-          <div class="eap-grid">
-            <div class="eap-card qa"><span class="hrs">6h</span><b>QA</b><p>Homologação + regressão do processo no app.</p></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 </div>
 <script>
 const views = {
   macro: document.getElementById('macro'),
   fluxo: document.getElementById('fluxo'),
-  detalhe: document.getElementById('detalhe'),
-  estrutura: document.getElementById('estrutura')
+  detalhe: document.getElementById('detalhe')
 };
 const btns = {
   macro: document.getElementById('btnMacro'),
   fluxo: document.getElementById('btnFluxo'),
-  detalhe: document.getElementById('btnDet'),
-  estrutura: document.getElementById('btnEap')
+  detalhe: document.getElementById('btnDet')
 };
 function show(which){
   Object.keys(views).forEach(k => {
@@ -714,7 +663,6 @@ function show(which){
 btns.macro.onclick = () => show('macro');
 btns.fluxo.onclick = () => show('fluxo');
 btns.detalhe.onclick = () => show('detalhe');
-btns.estrutura.onclick = () => show('estrutura');
 document.querySelectorAll('.gh').forEach(btn => {
   btn.addEventListener('click', () => {
     const grp = btn.parentElement;
@@ -729,21 +677,6 @@ document.getElementById('expAll').onclick = () => {
 };
 document.getElementById('colAll').onclick = () => {
   document.querySelectorAll('.grp').forEach(g => { g.setAttribute('data-open','0'); g.querySelector('.body').style.display='none'; });
-};
-document.querySelectorAll('.eap-h').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const blk = btn.parentElement;
-    const body = blk.querySelector('.eap-body');
-    const open = blk.getAttribute('data-open') === '1';
-    blk.setAttribute('data-open', open ? '0' : '1');
-    body.style.display = open ? 'none' : 'block';
-  });
-});
-document.getElementById('expEap').onclick = () => {
-  document.querySelectorAll('.eap-block').forEach(g => { g.setAttribute('data-open','1'); g.querySelector('.eap-body').style.display='block'; });
-};
-document.getElementById('colEap').onclick = () => {
-  document.querySelectorAll('.eap-block').forEach(g => { g.setAttribute('data-open','0'); g.querySelector('.eap-body').style.display='none'; });
 };
 </script>
 </body>
