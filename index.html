@@ -193,8 +193,9 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .dep-help .zoom button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-weight:700;color:var(--navy)}
 .dep-help .zoom #zoomFit{background:var(--blue);border-color:var(--blue);color:#fff}
 #macro{margin-top:18px}
-.org-wrap{overflow-x:auto;padding-bottom:8px}
-.org{width:max-content;margin:0 auto;padding:4px 10px 20px}
+.org-wrap{overflow:hidden;padding:0;min-height:calc(100vh - 280px);height:calc(100vh - 280px);cursor:grab;position:relative;border:1px solid var(--line);border-radius:14px;background:#f8fbff}
+.org-wrap.grabbing{cursor:grabbing}
+.org{width:max-content;margin:0;padding:24px 40px 80px;transform-origin:0 0;transition:transform .1s ease-out;position:relative}
 .org ul{display:flex;justify-content:center;padding:22px 0 0;margin:0;position:relative}
 .org > ul{padding-top:0}
 .org li{list-style:none;position:relative;padding:22px 5px 0;display:flex;flex-direction:column;align-items:center}
@@ -253,8 +254,9 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .dep-help .zoom button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-weight:700;color:var(--navy)}
 .dep-help .zoom #zoomFit{background:var(--blue);border-color:var(--blue);color:#fff}
 #macro{margin-top:18px}
-.org-wrap{overflow-x:auto;padding-bottom:8px}
-.org{width:max-content;margin:0 auto;padding:4px 10px 20px}
+.org-wrap{overflow:hidden;padding:0;min-height:calc(100vh - 280px);height:calc(100vh - 280px);cursor:grab;position:relative;border:1px solid var(--line);border-radius:14px;background:#f8fbff}
+.org-wrap.grabbing{cursor:grabbing}
+.org{width:max-content;margin:0;padding:24px 40px 80px;transform-origin:0 0;transition:transform .1s ease-out;position:relative}
 .org ul{display:flex;justify-content:center;padding:22px 0 0;margin:0;position:relative}
 .org > ul{padding-top:0}
 .org li{list-style:none;position:relative;padding:22px 5px 0;display:flex;flex-direction:column;align-items:center}
@@ -734,19 +736,64 @@ Object.values(depMap).forEach(it => {
 document.getElementById('depClear').onclick = clearFocus;
 macro.addEventListener('click', e => { if (!e.target.closest('[data-id], button')) clearFocus(); });
 
-// Zoom da árvore: começa ajustada à largura disponível
+// Zoom/pan da árvore (igual nelsino: scroll do mouse + botões)
 const orgWrap = document.getElementById('orgWrap');
 const org = document.getElementById('org');
-let zoom = 1;
-function setZoom(z){ zoom = Math.min(1.4, Math.max(0.4, z)); org.style.zoom = zoom; }
-function fitTree(){
-  if (macro.classList.contains('hidden')) return;
-  org.style.zoom = 1;
-  setZoom(Math.max(0.8, Math.min(1, orgWrap.clientWidth / org.scrollWidth)));
-  orgWrap.scrollLeft = (orgWrap.scrollWidth - orgWrap.clientWidth) / 2;
+let scale = 1, panning = false, pointX = 0, pointY = 0, start = { x: 0, y: 0 };
+function setTransform() {
+  org.style.transform = `translate(${pointX}px, ${pointY}px) scale(${scale})`;
 }
-document.getElementById('zoomIn').onclick = () => setZoom(zoom + 0.1);
-document.getElementById('zoomOut').onclick = () => setZoom(zoom - 0.1);
+function zoomControl(delta) {
+  scale += delta;
+  if (scale < 0.1) scale = 0.1;
+  if (scale > 3) scale = 3;
+  setTransform();
+}
+function fitTree() {
+  if (macro.classList.contains('hidden')) return;
+  org.style.transform = 'translate(0px, 0px) scale(1)';
+  const screenWidth = orgWrap.clientWidth, screenHeight = orgWrap.clientHeight;
+  const diagWidth = org.scrollWidth, diagHeight = org.scrollHeight;
+  const scaleX = (screenWidth - 40) / diagWidth, scaleY = (screenHeight - 40) / diagHeight;
+  scale = Math.min(scaleX, scaleY, 1);
+  if (scale < 0.1) scale = 0.1;
+  pointX = (screenWidth / 2) - (diagWidth * scale / 2);
+  pointY = 20;
+  setTransform();
+}
+orgWrap.onmousedown = function (e) {
+  if (e.target.closest('.deps-link') || e.target.closest('button')) return;
+  e.preventDefault();
+  start = { x: e.clientX - pointX, y: e.clientY - pointY };
+  panning = true;
+  orgWrap.classList.add('grabbing');
+};
+window.onmouseup = function () {
+  panning = false;
+  orgWrap.classList.remove('grabbing');
+};
+window.onmousemove = function (e) {
+  if (!panning) return;
+  pointX = e.clientX - start.x;
+  pointY = e.clientY - start.y;
+  setTransform();
+};
+orgWrap.addEventListener('wheel', function (e) {
+  if (e.target.closest('.deps-link')) return;
+  e.preventDefault();
+  const rect = orgWrap.getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  const xs = (mx - pointX) / scale, ys = (my - pointY) / scale;
+  scale *= Math.exp(-e.deltaY * 0.001);
+  if (scale < 0.1) scale = 0.1;
+  if (scale > 3) scale = 3;
+  pointX = mx - xs * scale;
+  pointY = my - ys * scale;
+  setTransform();
+}, { passive: false });
+document.getElementById('zoomIn').onclick = () => zoomControl(0.15);
+document.getElementById('zoomOut').onclick = () => zoomControl(-0.15);
 document.getElementById('zoomFit').onclick = fitTree;
 btns.macro.addEventListener('click', fitTree);
 window.addEventListener('resize', fitTree);
