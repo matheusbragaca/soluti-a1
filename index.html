@@ -52,8 +52,8 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .m.qa b{color:var(--qa)}
 .m.refine b{color:var(--refine)}
 .m.ux b{color:var(--ux)}
-.topline{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(240px,1fr);align-items:end;gap:24px;min-width:0}
-.bars{min-width:0;width:100%;margin-left:0}
+.topline{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;min-width:0}
+.bars{width:max-content;max-width:100%;margin-left:auto}
 .bars .lab{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.68rem;font-weight:700;margin-bottom:6px;justify-content:flex-start}
 .bars .lab span{white-space:nowrap}
 .bars .lab .d{color:var(--dev)}
@@ -181,8 +181,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 @media(max-width:900px){
   .bar{grid-template-columns:1fr}
   .topline{flex-direction:column;align-items:flex-start}
-  .bars{margin-left:0;max-width:none;width:100%}
-  .bars .lab{justify-content:flex-start}
+  .bars{margin-left:0;width:max-content;max-width:100%}
   .join{display:none}
   .fork{flex-direction:column}
   .toggle button{padding:8px 10px;font-size:.82rem}
