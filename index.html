@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emissão Certificado via Soluti — Dashboard de estimativas</title>
 <style>
+
 :root{
   --bg:#f4f7fb;
   --navy:#1e3a5f;
@@ -69,8 +70,6 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .node.refine{border-top:4px solid #ff991f;color:#7c5800}
 .node.refine .hrs{background:#fff4cc;color:#7c5800}
 .node .sub{display:block;margin-top:4px;font-size:.72rem;font-weight:600;color:var(--muted)}
-.pack.ux h3{background:#fce7f3;color:#9d174d}
-.pack.ux .leaf{border-left-color:var(--ux)}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
 .track .dev{width:53.892%;background:var(--dev)}
 .track .ux{width:18.563%;background:var(--ux)}
@@ -78,7 +77,6 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .track .qa{width:9.581%;background:var(--qa)}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
-.tree{margin-top:28px;display:flex;flex-direction:column;align-items:center}
 .node{
   background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 16px;
   box-shadow:0 4px 12px rgba(30,58,95,.05);text-align:center;
@@ -90,21 +88,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .node .hrs{display:inline-block;margin-left:8px;background:var(--ice);color:var(--blue-d);border-radius:999px;padding:2px 8px;font-size:.75rem}
 .node.admin .hrs{background:#e3fcef;color:var(--admin-d)}
 .node.app .hrs{background:#eae6ff;color:var(--app-d)}
-.join{width:100%;align-self:stretch;height:52px}
-.join svg{display:block;width:100%;height:52px}
-.fork{width:100%;align-self:stretch;display:flex;gap:0}
-.fork > .col{flex:1;max-width:none;padding:0 14px;display:flex;flex-direction:column;align-items:center}
-.stem{width:2px;height:16px;background:#c5d5e6}
-.pack{width:100%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:0 6px 16px rgba(30,58,95,.05)}
-.pack h3{margin:0 0 8px;padding:8px 10px;border-radius:10px;font-size:.82rem;display:flex;justify-content:space-between}
-.pack.admin h3{background:#e3fcef;color:var(--admin-d)}
-.pack.app h3{background:#eae6ff;color:var(--app-d)}
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
-.pack.admin .cards,.pack.app .cards,.pack.ux .cards{grid-template-columns:1fr}
 .leaf{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:8px 10px;min-height:78px}
-.pack.admin .leaf,.pack.app .leaf,.pack.ux .leaf{min-height:0}
-.pack.admin .leaf{border-left-color:var(--admin)}
-.pack.app .leaf{border-left-color:var(--app)}
 .leaf.qa{border-left-color:var(--qa)}
 .leaf b{display:block;font-size:.78rem;margin-bottom:4px}
 .leaf span{display:block;font-size:.72rem;color:var(--muted)}
@@ -178,17 +162,191 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .links{display:flex;flex-wrap:wrap;gap:8px;padding:14px 16px}
 .links a{text-decoration:none;color:var(--blue-d);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.78rem;font-weight:700;background:#fff}
 
+.dep-help{align-self:stretch;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0 0 18px;padding:10px 14px;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:.75rem;color:var(--muted)}
+.dep-help b{color:var(--navy)}
+.dep-help .k{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.dep-help .sw{width:14px;height:14px;border-radius:4px;border:2px solid}
+.dep-help .sw.need{border-color:#ff991f;background:#fff4e5}
+.dep-help .sw.sel{border-color:var(--blue);background:var(--ice)}
+.dep-help .sw.unl{border-color:var(--admin);background:#e3fcef}
+.lid{display:inline-block;margin-right:6px;font:800 .68rem ui-monospace,monospace;color:var(--muted);background:#f3f7fc;border-radius:5px;padding:1px 5px;vertical-align:1px}
+.node .lid{font-size:.72rem}
+[data-id]{cursor:pointer;transition:opacity .15s,box-shadow .15s,transform .15s}
+.deps-link{display:inline-block;margin-top:6px;cursor:pointer;color:var(--blue-d);text-decoration:underline;font:700 .7rem ui-monospace,monospace;padding:1px 4px;border-radius:4px}
+.deps-link:hover{background:var(--ice)}
+.deps-none{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:700;color:#a5adba}
+.node .deps-link,.node .deps-none{display:block;margin-top:4px}
+#macro.focus [data-id]{opacity:.35}
+#macro.focus [data-id].is-sel,#macro.focus [data-id].is-need,#macro.focus [data-id].is-unl{opacity:1}
+[data-id].is-sel{box-shadow:0 0 0 3px var(--blue);transform:translateY(-1px)}
+[data-id].is-need{box-shadow:0 0 0 3px #ff991f;background:#fffaf2}
+[data-id].is-unl{box-shadow:0 0 0 3px var(--admin);background:#f3fdf8}
+#dep-tip{position:absolute;z-index:50;max-width:340px;background:var(--navy);color:#fff;padding:12px 14px;border-radius:10px;font-size:.75rem;line-height:1.4;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none}
+#dep-tip ul{margin:6px 0 0;padding-left:18px}
+#dep-tip li{margin-bottom:3px}
+#dep-tip li b{color:#57d9a3;font-family:ui-monospace,monospace}
+#dep-tip .h{font-weight:800}
+#dep-tip .h + ul + .h{display:block;margin-top:8px}
+
+
+.dep-help .zoom{margin-left:auto;display:flex;flex-wrap:wrap;gap:6px}
+.dep-help .zoom button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-weight:700;color:var(--navy)}
+.dep-help .zoom #zoomFit{background:var(--blue);border-color:var(--blue);color:#fff}
+#macro{margin-top:18px}
+.org-wrap{overflow-x:auto;padding-bottom:8px}
+.org{width:max-content;margin:0 auto;padding:4px 10px 20px}
+.org ul{display:flex;justify-content:center;padding:22px 0 0;margin:0;position:relative}
+.org > ul{padding-top:0}
+.org li{list-style:none;position:relative;padding:22px 5px 0;display:flex;flex-direction:column;align-items:center}
+.org li::before,.org li::after{content:'';position:absolute;top:0;right:50%;width:50%;height:22px;border-top:2px solid #c5d5e6}
+.org li::after{right:auto;left:50%;border-left:2px solid #c5d5e6}
+.org li:only-child::before,.org li:only-child::after{display:none}
+.org li:only-child{padding-top:0}
+.org li:first-child::before,.org li:last-child::after{border:0 none}
+.org li:first-child::after{border-radius:8px 0 0 0}
+.org li:last-child::before{border-right:2px solid #c5d5e6;border-radius:0 8px 0 0}
+.org ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:2px solid #c5d5e6;height:22px}
+.node.phase{width:188px;text-align:left;padding:10px;border-radius:12px}
+.node.phase .ph{display:flex;justify-content:space-between;align-items:center;gap:6px;font-weight:800;font-size:.8rem;margin-bottom:8px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.node.phase .ph .hrs{margin-left:0;white-space:nowrap}
+.node.phase.ux{border-top-color:#f472b6}.node.phase.admin{border-top-color:#36b37e}.node.phase.app{border-top-color:#8777d9}
+.node.phase .cards{display:flex;flex-direction:column;gap:6px}
+.node.phase .leaf{min-height:0;color:var(--navy)}
+.node.phase.ux .leaf{border-left-color:var(--ux)}
+.node.phase.admin .leaf{border-left-color:var(--admin)}
+.node.phase.app .leaf{border-left-color:var(--app)}
+.node.phase .leaf.qa{border-left-color:var(--qa)}
+
 @media(max-width:900px){
   .bar{grid-template-columns:1fr}
   .topline{flex-direction:column;align-items:flex-start}
   .bars{margin-left:0;width:max-content;max-width:100%}
-  .join{display:none}
-  .fork{flex-direction:column}
   .toggle button{padding:8px 10px;font-size:.82rem}
 }
+
+.dep-help{align-self:stretch;display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0 0 18px;padding:10px 14px;background:#fff;border:1px solid var(--line);border-radius:14px;font-size:.75rem;color:var(--muted)}
+.dep-help b{color:var(--navy)}
+.dep-help .k{display:inline-flex;align-items:center;gap:6px;font-weight:700}
+.dep-help .sw{width:14px;height:14px;border-radius:4px;border:2px solid}
+.dep-help .sw.need{border-color:#ff991f;background:#fff4e5}
+.dep-help .sw.sel{border-color:var(--blue);background:var(--ice)}
+.dep-help .sw.unl{border-color:var(--admin);background:#e3fcef}
+.lid{display:inline-block;margin-right:6px;font:800 .68rem ui-monospace,monospace;color:var(--muted);background:#f3f7fc;border-radius:5px;padding:1px 5px;vertical-align:1px}
+.node .lid{font-size:.72rem}
+[data-id]{cursor:pointer;transition:opacity .15s,box-shadow .15s,transform .15s}
+.deps-link{display:inline-block;margin-top:6px;cursor:pointer;color:var(--blue-d);text-decoration:underline;font:700 .7rem ui-monospace,monospace;padding:1px 4px;border-radius:4px}
+.deps-link:hover{background:var(--ice)}
+.deps-none{display:inline-block;margin-top:6px;font-size:.68rem;font-weight:700;color:#a5adba}
+.node .deps-link,.node .deps-none{display:block;margin-top:4px}
+#macro.focus [data-id]{opacity:.35}
+#macro.focus [data-id].is-sel,#macro.focus [data-id].is-need,#macro.focus [data-id].is-unl{opacity:1}
+[data-id].is-sel{box-shadow:0 0 0 3px var(--blue);transform:translateY(-1px)}
+[data-id].is-need{box-shadow:0 0 0 3px #ff991f;background:#fffaf2}
+[data-id].is-unl{box-shadow:0 0 0 3px var(--admin);background:#f3fdf8}
+#dep-tip{position:absolute;z-index:50;max-width:340px;background:var(--navy);color:#fff;padding:12px 14px;border-radius:10px;font-size:.75rem;line-height:1.4;box-shadow:0 8px 24px rgba(0,0,0,.25);pointer-events:none}
+#dep-tip ul{margin:6px 0 0;padding-left:18px}
+#dep-tip li{margin-bottom:3px}
+#dep-tip li b{color:#57d9a3;font-family:ui-monospace,monospace}
+#dep-tip .h{font-weight:800}
+#dep-tip .h + ul + .h{display:block;margin-top:8px}
+.dep-help .zoom{margin-left:auto;display:flex;flex-wrap:wrap;gap:6px}
+.dep-help .zoom button{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 12px;cursor:pointer;font-weight:700;color:var(--navy)}
+.dep-help .zoom #zoomFit{background:var(--blue);border-color:var(--blue);color:#fff}
+#macro{margin-top:18px}
+.org-wrap{overflow-x:auto;padding-bottom:8px}
+.org{width:max-content;margin:0 auto;padding:4px 10px 20px}
+.org ul{display:flex;justify-content:center;padding:22px 0 0;margin:0;position:relative}
+.org > ul{padding-top:0}
+.org li{list-style:none;position:relative;padding:22px 5px 0;display:flex;flex-direction:column;align-items:center}
+.org li::before,.org li::after{content:'';position:absolute;top:0;right:50%;width:50%;height:22px;border-top:2px solid #c5d5e6}
+.org li::after{right:auto;left:50%;border-left:2px solid #c5d5e6}
+.org li:only-child::before,.org li:only-child::after{display:none}
+.org li:only-child{padding-top:0}
+.org li:first-child::before,.org li:last-child::after{border:0 none}
+.org li:first-child::after{border-radius:8px 0 0 0}
+.org li:last-child::before{border-right:2px solid #c5d5e6;border-radius:0 8px 0 0}
+.org ul ul::before{content:'';position:absolute;top:0;left:50%;border-left:2px solid #c5d5e6;height:22px}
+.node.phase{width:188px;text-align:left;padding:10px;border-radius:12px}
+.node.phase .ph{display:flex;justify-content:space-between;align-items:center;gap:6px;font-weight:800;font-size:.8rem;margin-bottom:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.node.phase .ph .hrs{margin-left:0;white-space:nowrap}
+.node.phase.ux{border-top-color:#f472b6}.node.phase.admin{border-top-color:#36b37e}.node.phase.app{border-top-color:#8777d9}
+.node.phase .cards{display:flex;flex-direction:column;gap:6px}
+.node.phase .leaf{min-height:0;color:var(--navy)}
+.node.phase.ux .leaf{border-left-color:var(--ux)}
+.node.phase.admin .leaf{border-left-color:var(--admin)}
+.node.phase.app .leaf{border-left-color:var(--app)}
+.node.phase .leaf.qa{border-left-color:var(--qa)}
+
+/* ===== Refinamentos ===== */
+body{-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
+button:focus-visible,[data-id]:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+/* Cabeçalho */
+.bar{padding:18px 24px 16px;gap:14px 18px}
+.bar h1{font-size:1.25rem}
+.toggle button{transition:background .15s,color .15s}
+.toggle button:not(.on):hover{background:#e6eef7;color:var(--navy)}
+.toggle button.on{box-shadow:0 2px 6px rgba(0,131,246,.3)}
+.topline{padding-top:12px;border-top:1px solid #eef3f8}
+.track{height:8px;gap:2px;background:transparent}
+.track i{border-radius:2px}
+.metrics{gap:0;padding-top:12px;border-top:1px solid #eef3f8}
+.metrics .m{padding:0 22px;border-left:1px solid var(--line)}
+.metrics .m:first-child{padding-left:0;border-left:0}
+
+/* Barra de dependências */
+.dep-help{border-radius:16px;box-shadow:0 4px 14px rgba(30,58,95,.05);padding:10px 12px 10px 16px}
+.dep-help .zoom button{transition:background .15s,border-color .15s}
+.dep-help .zoom button:hover{background:#f2f6fb;border-color:#c5d5e6}
+.dep-help .zoom #zoomFit:hover{background:var(--blue-d);border-color:var(--blue-d)}
+
+/* Árvore */
+.node{transition:box-shadow .15s}
+.node.epic{padding:12px 20px;font-size:1rem;box-shadow:0 8px 22px rgba(0,131,246,.16)}
+.node.epic .hrs{background:var(--blue);color:#fff}
+.node.branch{min-width:210px;padding:12px 18px;box-shadow:0 6px 16px rgba(30,58,95,.07)}
+.node.phase{width:196px;padding:0;overflow:hidden;box-shadow:0 6px 16px rgba(30,58,95,.06)}
+.node.phase .ph{margin:0;padding:10px 12px;border-bottom:0}
+.node.phase.ux .ph{background:#fce7f3;color:#9d174d}
+.node.phase.admin .ph{background:#e3fcef;color:var(--admin-d)}
+.node.phase.app .ph{background:#eae6ff;color:var(--app-d)}
+.node.phase .ph .hrs{background:rgba(255,255,255,.75)}
+.node.phase .cards{padding:8px}
+.node.phase .leaf{padding:9px 10px;border-radius:10px;transition:transform .15s,box-shadow .15s}
+.node.phase .leaf:hover{transform:translateY(-2px);box-shadow:0 6px 14px rgba(30,58,95,.1)}
+.node.phase .leaf b{line-height:1.3}
+.node.phase .leaf.qa{background:linear-gradient(180deg,#fff 0%,#fff8f6 100%)}
+.leaf .hrs{margin-left:6px}
+.leaf.qa .hrs{background:#ffebe6;color:var(--qa)}
+
+/* Tooltip */
+#dep-tip{border-radius:12px;padding:12px 14px 10px}
+
+/* Detalhamento */
+.wbs-tools{padding:0;margin:18px 0 10px;background:transparent}
+.wbs-tools button{transition:background .15s}
+.wbs-tools button:hover{background:#f2f6fb}
+.gh{transition:filter .15s}
+.gh:hover{filter:brightness(1.06)}
+.gh::before{content:'';width:7px;height:7px;margin:0 2px 2px 0;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .15s;opacity:.85}
+.grp[data-open="0"] .gh::before{transform:rotate(-45deg);margin-bottom:0}
+.row{transition:background .12s}
+.row:hover{background:#f8fbfe}
+.row.l2:hover{background:#f3f8fd}
+
+/* Fluxos */
+.flow-cap{margin:18px 6px 8px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+@media(max-width:900px){
+  .metrics{gap:14px 0}
+  .metrics .m{padding:0 16px 0 0;border-left:0}
+}
+
 </style>
 </head>
 <body>
+<div id="dep-tip" class="hidden"></div>
 <div class="shell">
 
 <header class="bar">
@@ -225,64 +383,116 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   </div>
 </header>
 
-<section id="macro" class="tree">
-  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">167h</span></div>
-  <div class="stem"></div>
-  <div class="node branch refine">Refinamento Técnico <span class="hrs">30h</span><span class="sub">Análise e estruturação do projeto</span></div>
-  <div class="join" aria-hidden="true">
-    <svg viewBox="0 0 1200 52" preserveAspectRatio="none">
-      <path d="M600 0 V18 H200 V52 M600 18 V52 M600 18 H1000 V52" fill="none" stroke="#c5d5e6" stroke-width="2"/>
-    </svg>
+<section id="macro">
+  <div class="dep-help">
+    <span><b>Dependências:</b> clique em um item para ver o que ele precisa e o que ele libera.</span>
+    <span class="k"><i class="sw sel"></i>Selecionado</span>
+    <span class="k"><i class="sw need"></i>Depende de</span>
+    <span class="k"><i class="sw unl"></i>Libera</span>
+    <div class="zoom">
+      <button type="button" id="zoomOut">− Zoom</button>
+      <button type="button" id="zoomFit">Centralizar árvore</button>
+      <button type="button" id="zoomIn">+ Zoom</button>
+      <button type="button" id="depClear">Limpar destaque</button>
+    </div>
   </div>
-  <div class="fork">
-    <div class="col">
-      <div class="node branch ux">UX/Design <span class="hrs">31h</span></div>
-      <div class="stem"></div>
-      <div class="pack ux">
-        <h3>Planejamento UX · 31h</h3>
-        <div class="cards">
-          <div class="leaf"><span class="hrs">2h</span><b>Mapeamento do fluxo e regras</b><span>Definir estados, regras e responsabilidades entre App, Esteira, Admin e Soluti</span></div>
-          <div class="leaf"><span class="hrs">9h</span><b>Wireframes - baixa fidelidade</b><span>Criar os wireframes das três frentes para validar estrutura, ações e estados</span></div>
-          <div class="leaf"><span class="hrs">1h</span><b>Validação técnica inicial</b><span>Validar com os devs o fluxo, as regras e os wireframes antes da alta fidelidade</span></div>
-          <div class="leaf"><span class="hrs">4h</span><b>App Cliente - alta fidelidade</b><span>Finalizar as telas do App para emissão, importação, renovação, sucesso e falhas</span></div>
-          <div class="leaf"><span class="hrs">3h</span><b>Esteira - alta fidelidade</b><span>Finalizar a etapa de Certificado Digital dentro dos fluxos de onboarding</span></div>
-          <div class="leaf"><span class="hrs">5h</span><b>Admin - alta fidelidade</b><span>Finalizar listagem de vouchers e gestão de certificados, status, erros e histórico</span></div>
-          <div class="leaf"><span class="hrs">1h</span><b>Checkpoint final com Dev</b><span>Revisar as telas finais e coletar considerações técnicas antes do handoff</span></div>
-          <div class="leaf"><span class="hrs">1h</span><b>Hotjar - configuração inicial</b><span>Configurar o rastreamento da tela atual no App e validar a coleta inicial</span></div>
-          <div class="leaf"><span class="hrs">5h</span><b>Prototipação + Handoff</b><span>Prototipar os principais cenários e documentar regras e comportamentos</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="node branch admin">Admin (Total) <span class="hrs">68h</span></div>
-      <div class="stem"></div>
-      <div class="pack admin">
-        <h3>Plataforma · 60h dev + 8h* QA</h3>
-        <div class="cards">
-          <div class="leaf"><span class="hrs">8h</span><b>Banco de dados</b><span>Salvamento de dados de emissão do usuário</span></div>
-          <div class="leaf"><span class="hrs">20h</span><b>Autenticação nas APIs da Soluti</b><span>Autenticação e criptografia de comunicação</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>Refatoração Tela</b><span>Telas do fluxo no admin</span></div>
-          <div class="leaf"><span class="hrs">4h</span><b>Emissão do certificado</b><span>Rotina de emissão do certificado</span></div>
-          <div class="leaf"><span class="hrs">4h</span><b>Recuperação do certificado</b><span>Rotina de recuperação do certificado</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação do certificado no admin</span></div>
-          <div class="leaf"><span class="hrs">8h</span><b>Gravação de vídeo</b><span>Gravação de vídeo do novo fluxo</span></div>
-          <div class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="node branch app">App (Total) <span class="hrs">38h</span></div>
-      <div class="stem"></div>
-      <div class="pack app">
-        <h3>Refatoração Tela · 30h dev + 8h* QA</h3>
-        <div class="cards">
-          <div class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Cliente</b><span>Tela do fluxo no App</span></div>
-          <div class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Esteira</b><span>Tela do fluxo no App</span></div>
-          <div class="leaf"><span class="hrs">3h</span><b>Emissão do Certificado na Conta Ágil</b><span>Emissão do certificado no app</span></div>
-          <div class="leaf"><span class="hrs">3h</span><b>Recuperação do certificado</b><span>Recuperação do certificado no app</span></div>
-          <div class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
-        </div>
-      </div>
+  <div class="org-wrap" id="orgWrap">
+    <div class="org" id="org">
+      <ul><li>
+        <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">167h</span></div>
+        <ul><li>
+          <div class="node branch refine" data-id="1" data-deps="">Refinamento Técnico <span class="hrs">30h</span><span class="sub">Análise e estruturação do projeto</span></div>
+          <ul>
+            <li>
+              <div class="node branch ux" data-id="2" data-deps="1">UX/Design <span class="hrs">31h</span></div>
+              <ul>
+                <li><div class="node phase ux">
+                  <div class="ph"><span>Descoberta e wireframes</span><span class="hrs">12h</span></div>
+                  <div class="cards">
+                    <div data-id="2.1" data-deps="1" class="leaf"><span class="hrs">2h</span><b>Mapeamento do fluxo e regras</b><span>Definir estados, regras e responsabilidades entre App, Esteira, Admin e Soluti</span></div>
+                    <div data-id="2.2" data-deps="2.1" class="leaf"><span class="hrs">9h</span><b>Wireframes - baixa fidelidade</b><span>Criar os wireframes das três frentes para validar estrutura, ações e estados</span></div>
+                    <div data-id="2.3" data-deps="2.2" class="leaf"><span class="hrs">1h</span><b>Validação técnica inicial</b><span>Validar com os devs o fluxo, as regras e os wireframes antes da alta fidelidade</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase ux">
+                  <div class="ph"><span>Alta fidelidade</span><span class="hrs">12h</span></div>
+                  <div class="cards">
+                    <div data-id="2.4" data-deps="2.3" class="leaf"><span class="hrs">4h</span><b>App Cliente - alta fidelidade</b><span>Finalizar as telas do App para emissão, importação, renovação, sucesso e falhas</span></div>
+                    <div data-id="2.5" data-deps="2.3" class="leaf"><span class="hrs">3h</span><b>Esteira - alta fidelidade</b><span>Finalizar a etapa de Certificado Digital dentro dos fluxos de onboarding</span></div>
+                    <div data-id="2.6" data-deps="2.3" class="leaf"><span class="hrs">5h</span><b>Admin - alta fidelidade</b><span>Finalizar listagem de vouchers e gestão de certificados, status, erros e histórico</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase ux">
+                  <div class="ph"><span>Validação e handoff</span><span class="hrs">7h</span></div>
+                  <div class="cards">
+                    <div data-id="2.7" data-deps="2.4, 2.5, 2.6" class="leaf"><span class="hrs">1h</span><b>Checkpoint final com Dev</b><span>Revisar as telas finais e coletar considerações técnicas antes do handoff</span></div>
+                    <div data-id="2.9" data-deps="2.7" class="leaf"><span class="hrs">5h</span><b>Prototipação + Handoff</b><span>Prototipar os principais cenários e documentar regras e comportamentos</span></div>
+                    <div data-id="2.8" data-deps="" class="leaf"><span class="hrs">1h</span><b>Hotjar - configuração inicial</b><span>Configurar o rastreamento da tela atual no App e validar a coleta inicial</span></div>
+                  </div>
+                </div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node branch admin" data-id="3" data-deps="1">Admin (Total) <span class="hrs">68h</span></div>
+              <ul>
+                <li><div class="node phase admin">
+                  <div class="ph"><span>Banco de dados e gravação</span><span class="hrs">16h</span></div>
+                  <div class="cards">
+                    <div data-id="3.1" data-deps="1" class="leaf"><span class="hrs">8h</span><b>Banco de dados</b><span>Salvamento de dados de emissão do usuário</span></div>
+                    <div data-id="3.6" data-deps="3.5" class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação do certificado no admin</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase admin">
+                  <div class="ph"><span>Integração Soluti (APIs)</span><span class="hrs">28h</span></div>
+                  <div class="cards">
+                    <div data-id="3.2" data-deps="1" class="leaf"><span class="hrs">20h</span><b>Autenticação nas APIs da Soluti</b><span>Autenticação e criptografia de comunicação</span></div>
+                    <div data-id="3.4" data-deps="3.1, 3.2" class="leaf"><span class="hrs">4h</span><b>Emissão do certificado</b><span>Rotina de emissão do certificado</span></div>
+                    <div data-id="3.5" data-deps="3.4" class="leaf"><span class="hrs">4h</span><b>Recuperação do certificado</b><span>Rotina de recuperação do certificado</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase admin">
+                  <div class="ph"><span>Telas e vídeo</span><span class="hrs">16h</span></div>
+                  <div class="cards">
+                    <div data-id="3.3" data-deps="2.9, 3.1" class="leaf"><span class="hrs">8h</span><b>Refatoração Tela</b><span>Telas do fluxo no admin</span></div>
+                    <div data-id="3.7" data-deps="3.3, 3.6, 4.4" class="leaf"><span class="hrs">8h</span><b>Gravação de vídeo</b><span>Gravação de vídeo do novo fluxo</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase admin">
+                  <div class="ph"><span>Q.A.</span><span class="hrs">8h*</span></div>
+                  <div class="cards">
+                    <div data-id="3.8" data-deps="3.3, 3.4, 3.5, 3.6" class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
+                  </div>
+                </div></li>
+              </ul>
+            </li>
+            <li>
+              <div class="node branch app" data-id="4" data-deps="2.9, 3.4">App (Total) <span class="hrs">38h</span></div>
+              <ul>
+                <li><div class="node phase app">
+                  <div class="ph"><span>Telas</span><span class="hrs">24h</span></div>
+                  <div class="cards">
+                    <div data-id="4.1" data-deps="2.9" class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Cliente</b><span>Tela do fluxo no App</span></div>
+                    <div data-id="4.2" data-deps="2.9" class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Esteira</b><span>Tela do fluxo no App</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase app">
+                  <div class="ph"><span>Certificado no App</span><span class="hrs">6h</span></div>
+                  <div class="cards">
+                    <div data-id="4.3" data-deps="3.4, 4.1" class="leaf"><span class="hrs">3h</span><b>Emissão do Certificado na Conta Ágil</b><span>Emissão do certificado no app</span></div>
+                    <div data-id="4.4" data-deps="3.5, 3.6, 4.3" class="leaf"><span class="hrs">3h</span><b>Recuperação do certificado</b><span>Recuperação do certificado no app</span></div>
+                  </div>
+                </div></li>
+                <li><div class="node phase app">
+                  <div class="ph"><span>Q.A.</span><span class="hrs">8h*</span></div>
+                  <div class="cards">
+                    <div data-id="4.5" data-deps="4.1, 4.2, 4.3, 4.4" class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
+                  </div>
+                </div></li>
+              </ul>
+            </li>
+          </ul>
+        </li></ul>
+      </li></ul>
     </div>
   </div>
 </section>
@@ -451,6 +661,89 @@ function show(which){
 btns.macro.onclick = () => show('macro');
 btns.fluxo.onclick = () => show('fluxo');
 btns.detalhe.onclick = () => show('detalhe');
+const macro = views.macro;
+const depItems = [...macro.querySelectorAll('[data-id]')];
+const depMap = {};
+const parseDeps = el => el.dataset.deps ? el.dataset.deps.split(',').map(d => d.trim()) : [];
+depItems.forEach(el => {
+  const b = el.querySelector('b');
+  depMap[el.dataset.id] = { id: el.dataset.id, el, title: b ? b.textContent : el.firstChild.textContent.trim(), deps: parseDeps(el), unlocks: [] };
+});
+Object.values(depMap).forEach(it => it.deps.forEach(d => depMap[d] && depMap[d].unlocks.push(it.id)));
+
+const tip = document.getElementById('dep-tip');
+function tipList(label, ids){
+  if (!ids.length) return '';
+  return `<span class="h">${label}</span><ul>` + ids.map(i => `<li><b>${i}</b> – ${depMap[i] ? depMap[i].title : ''}</li>`).join('') + '</ul>';
+}
+function showTip(e, id){
+  const it = depMap[id];
+  tip.innerHTML = tipList('🔗 Depende de:', it.deps) + tipList('🔓 Libera:', it.unlocks) || 'Sem dependências.';
+  tip.style.left = Math.max(8, Math.min(e.pageX - 150, document.documentElement.clientWidth - 350)) + 'px';
+  tip.style.top = (e.pageY + 18) + 'px';
+  tip.classList.remove('hidden');
+}
+function hideTip(){ tip.classList.add('hidden'); }
+
+function clearFocus(){
+  macro.classList.remove('focus');
+  depItems.forEach(el => el.classList.remove('is-sel', 'is-need', 'is-unl'));
+}
+function chain(id, key){
+  const seen = new Set(), stack = [...depMap[id][key]];
+  while (stack.length) {
+    const x = stack.pop();
+    if (!depMap[x] || seen.has(x)) continue;
+    seen.add(x); stack.push(...depMap[x][key]);
+  }
+  return seen;
+}
+function focusItem(id){
+  clearFocus();
+  macro.classList.add('focus');
+  depMap[id].el.classList.add('is-sel');
+  chain(id, 'deps').forEach(x => depMap[x].el.classList.add('is-need'));
+  chain(id, 'unlocks').forEach(x => depMap[x].el.classList.add('is-unl'));
+}
+Object.values(depMap).forEach(it => {
+  const el = it.el, b = el.querySelector('b');
+  const lid = document.createElement('i');
+  lid.className = 'lid'; lid.textContent = it.id;
+  (b || el).insertBefore(lid, (b || el).firstChild);
+  const link = document.createElement('span');
+  if (it.deps.length) {
+    link.className = 'deps-link'; link.textContent = '🔍 Deps: ' + it.deps.join(', ');
+  } else {
+    link.className = 'deps-none'; link.textContent = it.id === '2.8' ? 'Sem deps · em paralelo' : 'Sem dependências';
+  }
+  link.addEventListener('mouseenter', e => showTip(e, it.id));
+  link.addEventListener('mouseleave', hideTip);
+  el.appendChild(link);
+  el.addEventListener('click', e => {
+    e.stopPropagation();
+    if (el.classList.contains('is-sel')) clearFocus(); else focusItem(it.id);
+  });
+});
+document.getElementById('depClear').onclick = clearFocus;
+macro.addEventListener('click', e => { if (!e.target.closest('[data-id], button')) clearFocus(); });
+
+// Zoom da árvore: começa ajustada à largura disponível
+const orgWrap = document.getElementById('orgWrap');
+const org = document.getElementById('org');
+let zoom = 1;
+function setZoom(z){ zoom = Math.min(1.4, Math.max(0.4, z)); org.style.zoom = zoom; }
+function fitTree(){
+  if (macro.classList.contains('hidden')) return;
+  org.style.zoom = 1;
+  setZoom(Math.max(0.8, Math.min(1, orgWrap.clientWidth / org.scrollWidth)));
+  orgWrap.scrollLeft = (orgWrap.scrollWidth - orgWrap.clientWidth) / 2;
+}
+document.getElementById('zoomIn').onclick = () => setZoom(zoom + 0.1);
+document.getElementById('zoomOut').onclick = () => setZoom(zoom - 0.1);
+document.getElementById('zoomFit').onclick = fitTree;
+btns.macro.addEventListener('click', fitTree);
+window.addEventListener('resize', fitTree);
+fitTree();
 document.querySelectorAll('.gh').forEach(btn => {
   btn.addEventListener('click', () => {
     const grp = btn.parentElement;
