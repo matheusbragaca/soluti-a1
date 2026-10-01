@@ -43,7 +43,6 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .metrics{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end}
 .m span{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;color:var(--muted);text-transform:uppercase}
 .m b{font-size:1.45rem;line-height:1.05}
-.m i{display:block;font-style:normal;font-size:.68rem;font-weight:700;color:var(--muted);margin-top:2px}
 .m.navy b{color:var(--navy)}
 .m.admin b{color:var(--admin)}
 .m.app b{color:var(--app)}
@@ -187,21 +186,21 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   <div class="bar-right">
     <div class="toggle">
       <button id="btnMacro" class="on" type="button">Visão Macro</button>
-      <button id="btnFluxo" type="button">Fluxo</button>
+      <button id="btnFluxo" type="button">Fluxos</button>
       <button id="btnDet" type="button">Detalhamento</button>
       <button id="btnEap" type="button">Estrutura</button>
     </div>
   </div>
   <div class="metrics">
-    <div class="m navy"><span>Total do Projeto</span><b>92h</b><i>30 UX + 50 Dev + 12 QA</i></div>
-    <div class="m admin"><span>Admin (Total)</span><b>50h</b><i>44h Dev + 6h QA</i></div>
-    <div class="m app"><span>App (Total)</span><b>12h</b><i>6h Dev + 6h QA</i></div>
+    <div class="m navy"><span>Total do Projeto</span><b>92h</b></div>
+    <div class="m admin"><span>Admin (Total)</span><b>50h</b></div>
+    <div class="m app"><span>App (Total)</span><b>12h</b></div>
     <div class="m ux"><span>UX/Design</span><b>30h</b></div>
-    <div class="m dev"><span>Desenvolvimento</span><b>50h</b><i>44h Admin + 6h App</i></div>
-    <div class="m qa"><span>Testes e Q.A.</span><b>12h</b><i>6h Admin + 6h App</i></div>
+    <div class="m dev"><span>Desenvolvimento</span><b>50h</b></div>
+    <div class="m qa"><span>Testes e QA</span><b>12h</b></div>
   </div>
   <div class="bars">
-    <div class="lab"><span class="d">Desenvolvimento (54,3%)</span><span class="u">UX/Design (32,6%)</span><span class="q">Q.A. (13,0%)</span></div>
+    <div class="lab"><span class="d">Desenvolvimento (54,3%)</span><span class="u">UX/Design (32,6%)</span><span class="q">QA (13,0%)</span></div>
     <div class="track"><i class="dev"></i><i class="ux"></i><i class="qa"></i></div>
   </div>
 </header>
@@ -515,11 +514,10 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <div class="body">
         <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">92h</span></div></div>
         <div class="row l2"><div class="t"><b>UX/Design</b><p>Pesquisa, fluxos e design do fluxo novo.</p></div><div class="meta"><span class="tag ux">30h</span></div></div>
-        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>44h de desenvolvimento + 6h de Q.A.</p></div><div class="meta"><span class="tag admin">50h</span><span class="tag dev">44h Dev</span><span class="tag qa">6h QA</span></div></div>
-        <div class="row l2"><div class="t"><b>App (Total)</b><p>6h de desenvolvimento + 6h de Q.A.</p></div><div class="meta"><span class="tag app">12h</span><span class="tag dev">6h Dev</span><span class="tag qa">6h QA</span></div></div>
-        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>44h Admin + 6h App. Não inclui Q.A. (Admin 50h + App 12h = 62h porque cada um ainda carrega 6h de teste).</p></div><div class="meta"><span class="tag dev">50h</span></div></div>
-        <div class="row l2"><div class="t"><b>Testes e Q.A.</b><p>6h Admin + 6h App.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
-        <div class="note"><strong>Conferência:</strong> 30h UX + 50h Dev + 12h QA = 92h. Admin + App = 62h (50h Dev + 12h QA).</div>
+        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>44h de desenvolvimento + 6h de QA.</p></div><div class="meta"><span class="tag admin">50h</span><span class="tag dev">44h Dev</span><span class="tag qa">6h QA</span></div></div>
+        <div class="row l2"><div class="t"><b>App (Total)</b><p>6h de desenvolvimento + 6h de QA.</p></div><div class="meta"><span class="tag app">12h</span><span class="tag dev">6h Dev</span><span class="tag qa">6h QA</span></div></div>
+        <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>44h Admin + 6h App.</p></div><div class="meta"><span class="tag dev">50h</span></div></div>
+        <div class="row l2"><div class="t"><b>Testes e QA</b><p>6h Admin + 6h App.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
       </div>
     </div>
 
@@ -538,7 +536,6 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado (cron/poll).</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
-        <div class="note"><strong>Soma:</strong> 8 + 20 + 8 + 8 = 44h Dev + 6h QA = 50h.</div>
       </div>
     </div>
 
@@ -547,7 +544,6 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <div class="body">
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado no app (status, disparo, download).</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
-        <div class="note"><strong>Soma:</strong> 6h Dev + 6h QA = 12h.</div>
       </div>
     </div>
 
@@ -558,15 +554,14 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
         <div class="row"><div class="t"><b>2 Autenticação</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span></div></div>
         <div class="row"><div class="t"><b>4 Orquestração</b><p>Rotinas de emissão e recuperação de certificado.</p></div><div class="meta"><span class="tag tot">14h</span></div></div>
         <div class="row"><div class="t"><b>5 Gravação</b><p>Gravação de certificado e envio para Enotas + S3.</p></div><div class="meta"><span class="tag tot">8h</span></div></div>
-        <div class="note"><strong>Soma:</strong> 8 + 20 + 14 + 8 = 50h (44h Admin + 6h App). Q.A. não entra neste grupo.</div>
+        <div class="note">44h Admin + 6h App.</div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh qa" type="button">Testes e Q.A. <span class="right"><span class="pill">12h</span></span></button>
+      <button class="gh qa" type="button">Testes e QA <span class="right"><span class="pill">12h</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>7 QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag qa">12h</span></div></div>
-        <div class="note"><strong>Soma:</strong> 6h Admin + 6h App = 12h.</div>
       </div>
     </div>
 
@@ -657,7 +652,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
           </div>
         </div>
         <div class="eap-fase">
-          <h3>6 Testes e Q.A. <span>6h</span></h3>
+          <h3>6 Testes e QA <span>6h</span></h3>
           <div class="eap-grid">
             <div class="eap-card qa"><span class="hrs">6h</span><b>7 QA</b><p>Homologação + regressão do processo no admin.</p></div>
           </div>
@@ -675,7 +670,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
           </div>
         </div>
         <div class="eap-fase">
-          <h3>3 Testes e Q.A. <span>6h</span></h3>
+          <h3>3 Testes e QA <span>6h</span></h3>
           <div class="eap-grid">
             <div class="eap-card qa"><span class="hrs">6h</span><b>7 QA</b><p>Homologação + regressão do processo no app.</p></div>
           </div>
