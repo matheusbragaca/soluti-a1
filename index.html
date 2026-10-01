@@ -72,10 +72,10 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .pack.ux h3{background:#fce7f3;color:#9d174d}
 .pack.ux .leaf{border-left-color:var(--ux)}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
-.track .dev{width:55.215%;background:var(--dev)}
-.track .ux{width:19.018%;background:var(--ux)}
-.track .refine{width:18.405%;background:#ff991f}
-.track .qa{width:7.362%;background:var(--qa)}
+.track .dev{width:53.892%;background:var(--dev)}
+.track .ux{width:18.563%;background:var(--ux)}
+.track .refine{width:17.964%;background:#ff991f}
+.track .qa{width:9.581%;background:var(--qa)}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
 .tree{margin-top:28px;display:flex;flex-direction:column;align-items:center}
@@ -140,6 +140,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 
 .flow-board{margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:10px;overflow-x:auto}
 .flow-board svg,.flow-board img{display:block;width:100%;height:auto}
+.flow-board.wide img{width:auto;min-width:2400px;max-width:none;height:auto}
 .flow-cap{margin:8px 6px 0;font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
 .hire{margin-top:16px;padding:16px;overflow-x:auto}
@@ -204,13 +205,13 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
   </div>
   <div class="topline">
-    <div class="m navy"><span>Total do Projeto</span><b>163h</b></div>
+    <div class="m navy"><span>Total do Projeto</span><b>167h</b></div>
     <div class="bars">
       <div class="lab">
-        <span class="r">Refinamento (18,4%)</span>
-        <span class="u">UX/Design (19,0%)</span>
-        <span class="d">Desenvolvimento (55,2%)</span>
-        <span class="q">QA (7,4%)</span>
+        <span class="r">Refinamento (18,0%)</span>
+        <span class="u">UX/Design (18,6%)</span>
+        <span class="d">Desenvolvimento (53,9%)</span>
+        <span class="q">QA (9,6%)</span>
       </div>
       <div class="track"><i class="refine"></i><i class="ux"></i><i class="dev"></i><i class="qa"></i></div>
     </div>
@@ -218,15 +219,15 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   <div class="metrics">
     <div class="m refine"><span>Refinamento Técnico</span><b>30h</b></div>
     <div class="m ux"><span>UX/Design</span><b>31h</b></div>
-    <div class="m admin"><span>Admin (Total)</span><b>66h</b></div>
-    <div class="m app"><span>App (Total)</span><b>36h</b></div>
+    <div class="m admin"><span>Admin (Total)</span><b>68h</b></div>
+    <div class="m app"><span>App (Total)</span><b>38h</b></div>
     <div class="m dev"><span>Desenvolvimento</span><b>90h</b></div>
-    <div class="m qa"><span>Testes e QA</span><b>12h*</b></div>
+    <div class="m qa"><span>Testes e QA</span><b>16h*</b></div>
   </div>
 </header>
 
 <section id="macro" class="tree">
-  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">163h</span></div>
+  <div class="node epic">Feature: Emissão Certificado via Soluti <span class="hrs">167h</span></div>
   <div class="stem"></div>
   <div class="node branch refine">Refinamento Técnico <span class="hrs">30h</span><span class="sub">Análise e estruturação do projeto</span></div>
   <div class="join" aria-hidden="true">
@@ -254,10 +255,10 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       </div>
     </div>
     <div class="col">
-      <div class="node branch admin">Admin (Total) <span class="hrs">66h</span></div>
+      <div class="node branch admin">Admin (Total) <span class="hrs">68h</span></div>
       <div class="stem"></div>
       <div class="pack admin">
-        <h3>Plataforma · 60h dev + 6h* QA</h3>
+        <h3>Plataforma · 60h dev + 8h* QA</h3>
         <div class="cards">
           <div class="leaf"><span class="hrs">8h</span><b>Banco de dados</b><span>Salvamento de dados de emissão do usuário</span></div>
           <div class="leaf"><span class="hrs">20h</span><b>Autenticação nas APIs da Soluti</b><span>Autenticação e criptografia de comunicação</span></div>
@@ -266,21 +267,21 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
           <div class="leaf"><span class="hrs">4h</span><b>Recuperação do certificado</b><span>Rotina de recuperação do certificado</span></div>
           <div class="leaf"><span class="hrs">8h</span><b>Gravação</b><span>Gravação do certificado no admin</span></div>
           <div class="leaf"><span class="hrs">8h</span><b>Gravação de vídeo</b><span>Gravação de vídeo do novo fluxo</span></div>
-          <div class="leaf qa"><span class="hrs">6h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
+          <div class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="node branch app">App (Total) <span class="hrs">36h</span></div>
+      <div class="node branch app">App (Total) <span class="hrs">38h</span></div>
       <div class="stem"></div>
       <div class="pack app">
-        <h3>Refatoração Tela · 30h dev + 6h* QA</h3>
+        <h3>Refatoração Tela · 30h dev + 8h* QA</h3>
         <div class="cards">
           <div class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Cliente</b><span>Tela do fluxo no App</span></div>
           <div class="leaf"><span class="hrs">12h</span><b>Refatoração Tela - Esteira</b><span>Tela do fluxo no App</span></div>
           <div class="leaf"><span class="hrs">3h</span><b>Emissão do Certificado na Conta Ágil</b><span>Emissão do certificado no app</span></div>
           <div class="leaf"><span class="hrs">3h</span><b>Recuperação do certificado</b><span>Recuperação do certificado no app</span></div>
-          <div class="leaf qa"><span class="hrs">6h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
+          <div class="leaf qa"><span class="hrs">8h*</span><b>QA</b><span>Homologação + regressão do processo</span></div>
         </div>
       </div>
     </div>
@@ -290,12 +291,12 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 <section id="fluxo" class="hidden">
   <p class="flow-cap">Fluxo de contratação Soluti</p>
   <div class="flow-board">
-    <img src="Fluxo-1.png" alt="Fluxo de contratação Soluti — jornada do cliente">
+    <img src="Fluxo-1.png?v=hres" alt="Fluxo de contratação Soluti — jornada do cliente">
   </div>
 
 <p class="flow-cap">Fluxo do processo no sistema</p>
-  <div class="flow-board">
-    <img src="Fluxo-2.png" alt="Fluxo do processo no sistema — o que precisa ser construído">
+  <div class="flow-board wide">
+    <img src="Fluxo-2.png?v=hres" alt="Fluxo do processo no sistema — o que precisa ser construído">
   </div>
 </section>
 <section id="detalhe" class="hidden">
@@ -306,15 +307,15 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   <div class="wbs">
 
     <div class="grp" data-open="1">
-      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">163h</span></span></button>
+      <button class="gh navy" type="button">Total do Projeto <span class="right"><span class="pill">167h</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">163h</span></div></div>
+        <div class="row"><div class="t"><b>Cliente solicita → ContaÁgil emite → cliente baixa o PFX</b><p>A ContaÁgil valida a solicitação, gera a chave/CSR, dispara a emissão, acompanha o processamento, recupera o certificado, monta o PFX e disponibiliza o arquivo.</p></div><div class="meta"><span class="tag tot">167h</span></div></div>
         <div class="row l2"><div class="t"><b>Refinamento Técnico</b><p>Análise e estruturação do projeto.</p></div><div class="meta"><span class="tag refine">30h</span></div></div>
         <div class="row l2"><div class="t"><b>UX/Design</b><p>Fluxo entre App, Esteira, Admin e Soluti.</p></div><div class="meta"><span class="tag ux">31h</span></div></div>
-        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>60h de desenvolvimento + 6h* de QA.</p></div><div class="meta"><span class="tag admin">66h</span><span class="tag dev">60h Dev</span><span class="tag qa">6h* QA</span></div></div>
-        <div class="row l2"><div class="t"><b>App (Total)</b><p>30h de desenvolvimento + 6h* de QA.</p></div><div class="meta"><span class="tag app">36h</span><span class="tag dev">30h Dev</span><span class="tag qa">6h* QA</span></div></div>
+        <div class="row l2"><div class="t"><b>Admin (Total)</b><p>60h de desenvolvimento + 8h* de QA.</p></div><div class="meta"><span class="tag admin">68h</span><span class="tag dev">60h Dev</span><span class="tag qa">8h* QA</span></div></div>
+        <div class="row l2"><div class="t"><b>App (Total)</b><p>30h de desenvolvimento + 8h* de QA.</p></div><div class="meta"><span class="tag app">38h</span><span class="tag dev">30h Dev</span><span class="tag qa">8h* QA</span></div></div>
         <div class="row l2"><div class="t"><b>Desenvolvimento</b><p>60h Admin + 30h App.</p></div><div class="meta"><span class="tag dev">90h</span></div></div>
-        <div class="row l2"><div class="t"><b>Testes e QA</b><p>6h* Admin + 6h* App.</p></div><div class="meta"><span class="tag qa">12h*</span></div></div>
+        <div class="row l2"><div class="t"><b>Testes e QA</b><p>8h* Admin + 8h* App.</p></div><div class="meta"><span class="tag qa">16h*</span></div></div>
       </div>
     </div>
 
@@ -341,7 +342,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">66h</span><span class="pill">60h Dev</span><span class="pill">6h* QA</span></span></button>
+      <button class="gh admin" type="button">Admin (Total) <span class="right"><span class="pill">68h</span><span class="pill">60h Dev</span><span class="pill">8h* QA</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>Banco de dados</b><p>Salvamento de dados de emissão do usuário.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Autenticação nas APIs da Soluti</b><p>Autenticação e criptografia de comunicação.</p></div><div class="meta"><span class="tag tot">20h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
@@ -350,18 +351,18 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
         <div class="row"><div class="t"><b>Recuperação do certificado</b><p>Rotina de recuperação do certificado.</p></div><div class="meta"><span class="tag tot">4h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Gravação</b><p>Gravação do certificado no admin.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Gravação de vídeo</b><p>Gravação de vídeo do novo fluxo.</p></div><div class="meta"><span class="tag tot">8h</span><span class="tag admin">Admin</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">6h*</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no admin.</p></div><div class="meta"><span class="tag tot">8h*</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">36h</span><span class="pill">30h Dev</span><span class="pill">6h* QA</span></span></button>
+      <button class="gh app" type="button">App (Total) <span class="right"><span class="pill">38h</span><span class="pill">30h Dev</span><span class="pill">8h* QA</span></span></button>
       <div class="body">
         <div class="row"><div class="t"><b>Refatoração Tela - Cliente</b><p>Tela do fluxo no App.</p></div><div class="meta"><span class="tag tot">12h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Refatoração Tela - Esteira</b><p>Tela do fluxo no App.</p></div><div class="meta"><span class="tag tot">12h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Emissão do Certificado na Conta Ágil</b><p>Emissão do certificado no app.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
         <div class="row"><div class="t"><b>Recuperação do certificado</b><p>Recuperação do certificado no app.</p></div><div class="meta"><span class="tag tot">3h</span><span class="tag app">App</span><span class="tag dev">Dev</span></div></div>
-        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">6h*</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">8h*</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
@@ -382,9 +383,10 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
     </div>
 
     <div class="grp" data-open="1">
-      <button class="gh qa" type="button">Testes e QA <span class="right"><span class="pill">12h*</span></span></button>
+      <button class="gh qa" type="button">Testes e QA <span class="right"><span class="pill">16h*</span></span></button>
       <div class="body">
-        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag qa">12h*</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no admin. Emissão E2E na AR de homologação e regressão do voucher, upload manual e Soluti.</p></div><div class="meta"><span class="tag tot">8h*</span><span class="tag admin">Admin</span><span class="tag qa">QA</span></div></div>
+        <div class="row"><div class="t"><b>QA</b><p>Homologação + regressão do processo no app.</p></div><div class="meta"><span class="tag tot">8h*</span><span class="tag app">App</span><span class="tag qa">QA</span></div></div>
       </div>
     </div>
 
