@@ -19,7 +19,8 @@
   --app-d:#403294;
   --qa:#ff5630;
   --dev:#0052cc;
-  --refine:#3b82f6;
+  --refine:#c25100;
+  --ux:#e11d8f;
   --shadow:0 10px 30px rgba(30,58,95,.08);
 }
 *{box-sizing:border-box}
@@ -41,7 +42,7 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
   color:var(--muted);font-weight:700;white-space:nowrap;
 }
 .toggle button.on{background:var(--blue);color:#fff}
-.metrics{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;grid-column:1/-1}
+.metrics{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:flex-end;grid-column:1/-1;justify-content:flex-start}
 .m span{display:block;font-size:.68rem;letter-spacing:.08em;font-weight:800;color:var(--muted);text-transform:uppercase}
 .m b{font-size:1.45rem;line-height:1.05}
 .m.navy b{color:var(--navy)}
@@ -50,30 +51,30 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 .m.dev b{color:var(--dev)}
 .m.qa b{color:var(--qa)}
 .m.refine b{color:var(--refine)}
-.bars{min-width:0;width:100%;grid-column:1/-1}
-.bars .lab{display:flex;flex-wrap:wrap;gap:10px 28px;font-size:.72rem;font-weight:700;margin-bottom:6px}
-.bars .lab span{display:flex;flex-direction:column;gap:1px;line-height:1.2;white-space:nowrap}
-.bars .lab span strong{font-size:.82rem;font-weight:800}
+.m.ux b{color:var(--ux)}
+.topline{grid-column:1/-1;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}
+.bars{min-width:320px;max-width:520px;flex:0 1 520px;margin-left:auto}
+.bars .lab{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.72rem;font-weight:700;margin-bottom:6px;justify-content:flex-end}
+.bars .lab span{white-space:nowrap}
 .bars .lab .d{color:var(--dev)}
 .bars .lab .q{color:var(--qa)}
-.bars .lab .u{color:#c25100}
+.bars .lab .u{color:var(--ux)}
 .bars .lab .r{color:var(--refine)}
-.m.ux b{color:#c25100}
-.tag.ux{background:#fff4cc;color:#7c5800}
-.tag.refine{background:#dbeafe;color:#1d4ed8}
-.gh.ux{background:#c25100}
+.tag.ux{background:#fce7f3;color:#9d174d}
+.tag.refine{background:#fff4cc;color:#7c5800}
+.gh.ux{background:var(--ux)}
 .gh.refine{background:var(--refine)}
-.node.ux{border-top:4px solid #ff991f;color:#7c5800}
-.node.ux .hrs{background:#fff4cc;color:#7c5800}
-.node.refine{border-top:4px solid var(--refine);color:#1d4ed8}
-.node.refine .hrs{background:#dbeafe;color:#1d4ed8}
+.node.ux{border-top:4px solid var(--ux);color:#9d174d}
+.node.ux .hrs{background:#fce7f3;color:#9d174d}
+.node.refine{border-top:4px solid #ff991f;color:#7c5800}
+.node.refine .hrs{background:#fff4cc;color:#7c5800}
 .node .sub{display:block;margin-top:4px;font-size:.72rem;font-weight:600;color:var(--muted)}
-.pack.ux h3{background:#fff4cc;color:#7c5800}
-.pack.ux .leaf{border-left-color:#ff991f}
+.pack.ux h3{background:#fce7f3;color:#9d174d}
+.pack.ux .leaf{border-left-color:var(--ux)}
 .track{height:7px;background:#e6eef7;border-radius:99px;overflow:hidden;display:flex}
 .track .dev{width:55.556%;background:var(--dev)}
-.track .ux{width:18.519%;background:#ff991f}
-.track .refine{width:18.519%;background:var(--refine)}
+.track .ux{width:18.519%;background:var(--ux)}
+.track .refine{width:18.519%;background:#ff991f}
 .track .qa{width:7.407%;background:var(--qa)}
 .bar-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
 
@@ -179,7 +180,9 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
 
 @media(max-width:900px){
   .bar{grid-template-columns:1fr}
-  .bar-right{align-items:flex-start}
+  .topline{flex-direction:column;align-items:flex-start}
+  .bars{margin-left:0;max-width:none;width:100%}
+  .bars .lab{justify-content:flex-start}
   .join{display:none}
   .fork{flex-direction:column}
   .toggle button{padding:8px 10px;font-size:.82rem}
@@ -201,23 +204,25 @@ code{font:.82em ui-monospace,monospace;background:var(--ice);color:var(--blue-d)
       <button id="btnDet" type="button">Detalhamento</button>
     </div>
   </div>
-  <div class="metrics">
+  <div class="topline">
     <div class="m navy"><span>Total do Projeto</span><b>162h</b></div>
+    <div class="bars">
+      <div class="lab">
+        <span class="r">Refinamento (18,5%)</span>
+        <span class="u">UX/Design (18,5%)</span>
+        <span class="d">Desenvolvimento (55,6%)</span>
+        <span class="q">QA (7,4%)</span>
+      </div>
+      <div class="track"><i class="refine"></i><i class="ux"></i><i class="dev"></i><i class="qa"></i></div>
+    </div>
+  </div>
+  <div class="metrics">
+    <div class="m refine"><span>Refinamento Técnico</span><b>30h</b></div>
+    <div class="m ux"><span>UX/Design</span><b>30h</b></div>
     <div class="m admin"><span>Admin (Total)</span><b>66h</b></div>
     <div class="m app"><span>App (Total)</span><b>36h</b></div>
-    <div class="m ux"><span>UX/Design</span><b>30h</b></div>
-    <div class="m refine"><span>Refinamento Técnico</span><b>30h</b></div>
     <div class="m dev"><span>Desenvolvimento</span><b>90h</b></div>
     <div class="m qa"><span>Testes e QA</span><b>12h*</b></div>
-  </div>
-  <div class="bars">
-    <div class="lab">
-      <span class="d">Desenvolvimento <strong>55,6%</strong></span>
-      <span class="u">UX/Design <strong>18,5%</strong></span>
-      <span class="r">Refinamento <strong>18,5%</strong></span>
-      <span class="q">QA <strong>7,4%</strong></span>
-    </div>
-    <div class="track"><i class="dev"></i><i class="ux"></i><i class="refine"></i><i class="qa"></i></div>
   </div>
 </header>
 
